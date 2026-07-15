@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MasTool — VIP Club</title>
+<!--FONTS-->
+<!--BASE-->
+<style>
+  body{ padding:0; display:block; background:var(--cream); }
+
+  .page{ max-width:520px; margin:0 auto; background:var(--cream); min-height:100vh; position:relative; overflow:hidden; }
+
+  .hero{
+    background:var(--black); color:var(--cream);
+    text-align:center; padding:40px 24px 30px;
+    position:relative; z-index:1;
+  }
+  .hero .kicker{
+    font-family:'Oswald',sans-serif; font-weight:600;
+    text-transform:uppercase; letter-spacing:.4em; text-indent:.4em;
+    font-size:13px; color:var(--brass); margin-top:16px;
+  }
+  .hero .kicker-he{ direction:rtl; font-weight:700; font-size:15px; color:#C9BB97; margin-top:6px; }
+
+  .perks{ position:relative; z-index:1; padding:26px 26px 6px; }
+  .perks h2{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.12em; font-size:14px; color:var(--green); margin-bottom:14px;
+  }
+  .perk{
+    display:grid; grid-template-columns:22px 1fr; gap:12px;
+    align-items:start; padding:11px 0; border-bottom:1px solid var(--line);
+  }
+  .perk:last-child{ border-bottom:none; }
+  .perk .star{ color:var(--brass); font-size:16px; line-height:1.3; text-align:center; }
+  .perk .en{ font-weight:600; font-size:15px; color:var(--ink); line-height:1.35; }
+  .perk .he{ direction:rtl; font-size:13.5px; color:var(--green-soft); margin-top:2px; }
+
+  .form-wrap{ position:relative; z-index:1; padding:20px 26px 30px; }
+  .field{ margin-bottom:14px; }
+  .field label{
+    display:block; font-family:'Oswald',sans-serif; font-weight:500;
+    text-transform:uppercase; letter-spacing:.1em; font-size:11px;
+    color:var(--green); margin-bottom:6px;
+  }
+  .field label .he{
+    font-family:'Heebo',sans-serif; text-transform:none; letter-spacing:0;
+    color:var(--green-soft); font-size:12px; float:right; direction:rtl;
+  }
+  .field input[type=text],
+  .field input[type=tel],
+  .field input[type=email]{
+    width:100%; padding:12px 13px;
+    background:#FBF6EA; border:1px solid var(--line);
+    font-family:'Heebo',sans-serif; font-size:16px; color:var(--ink);
+    border-radius:2px; outline:none;
+  }
+  .field input:focus{ border-color:var(--green); background:#fff; }
+
+  .consent{
+    display:grid; grid-template-columns:20px 1fr; gap:10px;
+    align-items:start; margin:16px 0 18px;
+  }
+  .consent input{ width:18px; height:18px; margin-top:2px; accent-color:var(--green); }
+  .consent .en{ font-size:12.5px; color:var(--green-soft); line-height:1.45; }
+  .consent .he{ direction:rtl; font-size:12px; color:var(--green-soft); margin-top:3px; line-height:1.45; }
+
+  .btn{
+    width:100%; padding:16px;
+    background:var(--green); color:var(--cream);
+    border:none; cursor:pointer;
+    font-family:'Oswald',sans-serif; font-weight:600;
+    text-transform:uppercase; letter-spacing:.18em; text-indent:.18em;
+    font-size:15px; border-radius:2px;
+    transition:background .15s ease;
+  }
+  .btn:hover{ background:#3D5943; }
+  .btn:disabled{ opacity:.5; cursor:not-allowed; }
+  .btn-he{
+    text-align:center; direction:rtl; margin-top:8px;
+    font-size:13px; color:var(--green-soft); font-weight:500;
+  }
+
+  .msg{ margin-top:14px; padding:13px; font-size:13.5px; border-radius:2px; display:none; line-height:1.5; }
+  .msg.ok{ display:block; background:var(--green); color:var(--cream); }
+  .msg.err{ display:block; background:#7A2E22; color:#F5E3DC; }
+  .msg .he{ direction:rtl; margin-top:4px; opacity:.9; }
+
+  .holdnote{
+    position:relative; z-index:1;
+    margin:0 26px 20px;
+    background:var(--green); color:#E4EDE2;
+    padding:13px 15px; border-radius:2px;
+  }
+  .holdnote .en{ font-size:12.5px; line-height:1.5; }
+  .holdnote .he{ direction:rtl; font-size:12px; line-height:1.5; color:#C6D6C4; margin-top:5px; }
+  .holdnote b{ color:#fff; }
+
+  .fineprint{
+    position:relative; z-index:1;
+    padding:0 26px 34px; font-size:11px;
+    color:var(--green-soft); line-height:1.6; text-align:center;
+  }
+  .fineprint .he{ direction:rtl; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <!--WATERMARK-->
+
+    <header class="hero">
+      <!--LOGO-->
+      <div class="kicker">VIP Club</div>
+      <div class="kicker-he">מועדון ה-VIP</div>
+      <div class="rule"></div>
+    </header>
+
+    <div class="paystrip">
+      <span class="en">Cash / Bit Only</span>
+      <span class="dot">•</span>
+      <span class="he">התשלום במזומן . ביט בלבד</span>
+    </div>
+
+    <section class="perks">
+      <h2>What You Get <span class="he">/ מה מקבלים</span></h2>
+
+      <div class="perk">
+        <div class="star"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></div>
+        <div>
+          <div class="en">VIP pricing on all merch — up to ₪50 off</div>
+          <div class="he">מחירי VIP על כל המרצ'נדייז — עד ₪50 הנחה</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="star"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></div>
+        <div>
+          <div class="en">First access to limited edition art posters</div>
+          <div class="he">גישה ראשונה לפוסטרי מהדורה מוגבלת</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="star"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></div>
+        <div>
+          <div class="en">Early notice on new shows before they go public</div>
+          <div class="he">עדכון מוקדם על הופעות לפני כולם</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="star"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></div>
+        <div>
+          <div class="en">Items held under your name for 2 hours from doors</div>
+          <div class="he">הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="star"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></div>
+        <div>
+          <div class="en">Free to join. Leave anytime.</div>
+          <div class="he">ההצטרפות חינם. אפשר לצאת בכל רגע.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-wrap">
+      <div class="field">
+        <label for="name">Full Name <span class="he">שם מלא</span></label>
+        <input type="text" id="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone <span class="he">טלפון</span></label>
+        <input type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="050-000-0000" required>
+      </div>
+      <div class="field">
+        <label for="email">Email <span class="he">אימייל</span></label>
+        <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@example.com">
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="consent">
+        <label for="consent" style="margin:0">
+          <div class="en">I agree to receive updates and offers from MasTool by SMS/email.</div>
+          <div class="he">אני מאשר/ת קבלת עדכונים ומבצעים מ-MasTool ב-SMS/אימייל.</div>
+        </label>
+      </div>
+
+      <button class="btn" id="submit">Join the VIP Club</button>
+      <div class="btn-he">הצטרפו למועדון ה-VIP</div>
+
+      <div class="msg" id="msg"></div>
+    </section>
+
+    <div class="holdnote">
+      <div class="en"><b>Hold policy:</b> Items are held under your name for two hours from doors opening — <b>21:00</b> for this show. After that, all remaining merch is released to the general public.</div>
+      <div class="he"><b>מדיניות שמירה:</b> הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — <b>21:00</b> בהופעה זו. לאחר מכן כל המרצ'נדייז שנותר ישוחרר לקהל הרחב.</div>
+    </div>
+
+    <div class="fineprint">
+      <div>MasTool · Gagarin Club, Tel Aviv · 13 August 2026</div>
+      <div class="he">ניתן להסיר את ההרשמה בכל עת.</div>
+    </div>
+  </div>
+
+<script>
+  /* ============================================================
+     STEP 1 — paste your form endpoint below.
+     Works with Formspree ("https://formspree.io/f/xxxxxxx"),
+     Google Apps Script web app, Airtable, or any URL that
+     accepts a POST with JSON.
+     Until this is set, the form shows a friendly error.
+     ============================================================ */
+  const FORM_ENDPOINT = "PASTE_YOUR_FORM_ENDPOINT_HERE";
+
+  const $ = (id) => document.getElementById(id);
+  const msg = $("msg");
+
+  function show(kind, en, he) {
+    msg.className = "msg " + kind;
+    msg.innerHTML = '<div>' + en + '</div><div class="he">' + he + '</div>';
+  }
+
+  $("submit").addEventListener("click", async () => {
+    const name    = $("name").value.trim();
+    const phone   = $("phone").value.trim();
+    const email   = $("email").value.trim();
+    const consent = $("consent").checked;
+
+    if (!name || !phone) {
+      show("err", "Please enter your name and phone.", "נא למלא שם וטלפון.");
+      return;
+    }
+    if (!consent) {
+      show("err", "Please tick the consent box to join.", "נא לאשר קבלת עדכונים כדי להצטרף.");
+      return;
+    }
+    if (FORM_ENDPOINT.startsWith("PASTE_")) {
+      show("err", "Form endpoint not configured yet.", "יעד הטופס עדיין לא הוגדר.");
+      return;
+    }
+
+    const btn = $("submit");
+    btn.disabled = true;
+    btn.textContent = "Joining…";
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name, phone, email,
+          consent: true,
+          source: "merch-stand-qr",
+          show: "Gagarin 2026-08-13",
+          ts: new Date().toISOString()
+        })
+      });
+      if (!res.ok) throw new Error("bad status " + res.status);
+
+      show("ok", "You're in. See you at the stand — show this at checkout for VIP pricing.",
+                 "נרשמת! נתראה בדוכן — הציגו את המסך הזה לקבלת מחירי VIP.");
+      btn.style.display = "none";
+      document.querySelector(".btn-he").style.display = "none";
+    } catch (e) {
+      show("err", "Something went wrong. Please try again or sign up at the stand.",
+                  "משהו השתבש. נסו שוב או הירשמו בדוכן.");
+      btn.disabled = false;
+      btn.textContent = "Join the VIP Club";
+    }
+  });
+</script>
+</body>
+</html>

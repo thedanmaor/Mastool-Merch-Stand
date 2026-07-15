@@ -1,0 +1,161 @@
+/* ============================================================
+   MasTool — merch collateral design system
+   Shared tokens + components across menu / VIP / Bit pages
+   ============================================================ */
+:root{
+  --cream:      #F0E7D2;
+  --cream-deep: #E7DBBF;
+  --cream-warm: #E3D7B6;
+  --ink:        #1B1814;
+  --black:      #0E0D0B;
+  --green:      #334A38;
+  --green-soft: #4E6B53;
+  --brass:      #B0894E;
+  --brass-lite: #E9C886;
+  --line:       #C9B98F;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+/* Oswald + Anton are Latin-only: force Heebo for Hebrew and for the shekel sign,
+   so nothing ever falls back to a system font at the print shop. */
+.he, .item-he, .subtitle-he, .kicker-he, .scan-he, .btn-he,
+[dir="rtl"], .ils{ font-family:'Heebo', sans-serif; }
+
+/* star is an SVG, not a glyph — ✦ (U+2726) exists in none of our fonts */
+svg.ic{
+  width:.85em; height:.85em; fill:currentColor;
+  display:inline-block; vertical-align:-.08em; flex:none;
+}
+html,body{ background:#2a2a28; }
+body{
+  font-family:'Heebo', system-ui, sans-serif;
+  color:var(--ink);
+  display:flex;
+  justify-content:center;
+  padding:32px 16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- sheet ---------- */
+.sheet{
+  width:100%;
+  background:var(--cream);
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px rgba(0,0,0,.45);
+  overflow:hidden;
+  position:relative;
+}
+.sheet--a4{ max-width:720px; }
+.sheet--a5{ max-width:520px; }
+
+/* ---------- 9-point star watermark ---------- */
+.watermark{
+  position:absolute; top:46%; left:50%;
+  width:128%; max-width:760px;
+  transform:translate(-50%,-50%);
+  opacity:.05; pointer-events:none; z-index:0;
+}
+.watermark svg{ width:100%; height:auto; display:block; }
+
+/* ---------- header ---------- */
+.header{
+  background:var(--black);
+  color:var(--cream);
+  text-align:center;
+  padding:26px 24px 20px;
+  position:relative; z-index:1;
+}
+.header--tight{ padding:26px 22px 22px; }
+.wordmark-img{ display:block; width:min(82%,460px); height:auto; margin:6px auto 2px; }
+.wordmark-img--sm{ width:min(78%,320px); }
+.subtitle{
+  margin-top:14px;
+  font-family:'Oswald', sans-serif; font-weight:500;
+  letter-spacing:.42em; text-indent:.42em;
+  font-size:clamp(12px,2.6vw,16px);
+  color:#D8CBAA; text-transform:uppercase;
+}
+.subtitle-he{
+  margin-top:6px; font-weight:500; letter-spacing:.04em;
+  font-size:clamp(13px,2.8vw,17px);
+  color:#C9BB97; direction:rtl;
+  font-family:'Heebo', sans-serif;
+}
+.rule{ width:54px; height:3px; background:var(--brass); margin:14px auto 0; }
+
+/* ---------- payment strip: CASH / BIT ONLY ---------- */
+.paystrip{
+  position:relative; z-index:1;
+  background:var(--brass);
+  color:#1B1814;
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; flex-wrap:wrap;
+  padding:11px 20px;
+  text-align:center;
+}
+.paystrip .en{
+  font-family:'Oswald', sans-serif; font-weight:700;
+  text-transform:uppercase; letter-spacing:.2em; text-indent:.2em;
+  font-size:clamp(13px,2.9vw,17px);
+}
+.paystrip .he{
+  font-family:'Heebo', sans-serif; font-weight:700;
+  direction:rtl; font-size:clamp(13px,2.9vw,16px);
+}
+.paystrip .dot{ opacity:.5; font-weight:400; }
+
+/* ---------- QR block ---------- */
+.qr-panel{
+  position:relative; z-index:1;
+  display:grid; grid-template-columns:auto 1fr; gap:20px;
+  align-items:center;
+  padding:20px 30px;
+  border-top:1px solid var(--line);
+}
+.qr-slot{
+  width:112px; height:112px;
+  background:#fff;
+  border:2px dashed var(--green-soft);
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:8px;
+  flex:none;
+}
+.qr-slot img{ width:100%; height:100%; object-fit:contain; display:block; }
+.qr-slot .hint{
+  font-family:'Oswald',sans-serif; font-size:10px; line-height:1.35;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--green-soft);
+}
+.qr-slot .hint .he{ font-family:'Heebo',sans-serif; display:block; }
+.qr-copy .h{
+  font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+  font-size:clamp(16px,3.2vw,20px); letter-spacing:.05em; color:var(--ink);
+  line-height:1.15;
+}
+.qr-copy .h-he{ direction:rtl; font-weight:700; color:var(--green); font-size:clamp(14px,3vw,17px); margin-top:4px; }
+.qr-copy .sub{ font-size:12.5px; color:var(--green-soft); margin-top:8px; line-height:1.5; }
+.qr-copy .sub-he{ direction:rtl; }
+
+/* ---------- footer ---------- */
+.foot{
+  position:relative; z-index:1;
+  padding:11px 30px 14px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--line);
+}
+.foot .note{ font-size:12px; color:var(--green-soft); letter-spacing:.02em; }
+.foot .note-he{ direction:rtl; }
+.badge{
+  font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--brass); font-weight:600;
+  border:1px solid var(--brass); padding:5px 11px; border-radius:2px; white-space:nowrap;
+}
+
+/* ---------- print ---------- */
+@media print{
+  html,body{ background:#fff; padding:0; }
+  .sheet{ box-shadow:none; border:none; max-width:none; }
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}

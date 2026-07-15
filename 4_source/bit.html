@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MasTool — Pay via Bit</title>
+<!--FONTS-->
+<!--BASE-->
+<style>
+  .pay-body{ position:relative; z-index:1; padding:26px 30px 8px; text-align:center; }
+
+  .big-qr{
+    width:min(62%,330px); aspect-ratio:1/1;
+    margin:0 auto;
+    background:#fff;
+    border:3px solid var(--green);
+    display:flex; align-items:center; justify-content:center;
+    padding:10px;
+  }
+  .big-qr img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .big-qr .hint{
+    font-family:'Oswald',sans-serif; font-size:12px; line-height:1.5;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--green-soft);
+    padding:10px;
+  }
+
+  .payee{
+    margin-top:16px; font-size:13px; color:var(--green-soft);
+    letter-spacing:.02em;
+  }
+  .payee b{ color:var(--ink); font-weight:700; }
+  .scan-en{
+    font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:.14em; text-indent:.14em;
+    font-size:clamp(18px,4vw,24px); color:var(--ink);
+    margin-top:22px; line-height:1.2;
+  }
+  .scan-he{
+    direction:rtl; font-weight:700; color:var(--green);
+    font-size:clamp(16px,3.6vw,20px); margin-top:6px;
+  }
+
+  .steps{
+    margin:20px auto 0;
+    max-width:380px;
+    text-align:left;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .step{
+    display:grid; grid-template-columns:26px 1fr; gap:12px;
+    align-items:start; margin-bottom:11px;
+  }
+  .step .n{
+    width:26px; height:26px; border-radius:50%;
+    background:var(--green); color:var(--cream);
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:13px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step .t-en{ font-size:14px; font-weight:500; color:var(--ink); line-height:1.35; }
+  .step .t-he{ direction:rtl; font-size:13px; color:var(--green-soft); margin-top:2px; }
+
+  .amount-note{
+    margin-top:6px;
+    background:var(--cream-warm);
+    border-inline-start:4px solid var(--brass);
+    padding:11px 14px;
+    text-align:left;
+    max-width:380px;
+    margin-left:auto; margin-right:auto;
+  }
+  .amount-note .en{ font-size:13px; font-weight:600; color:var(--ink); }
+  .amount-note .he{ direction:rtl; font-size:12.5px; color:var(--green-soft); margin-top:3px; }
+</style>
+</head>
+<body>
+  <div class="sheet sheet--a5">
+    <!--WATERMARK-->
+
+    <header class="header header--tight">
+      <!--LOGO-->
+      <div class="subtitle">Pay via Bit</div>
+      <div class="subtitle-he">תשלום בביט</div>
+      <div class="rule"></div>
+    </header>
+
+    <div class="paystrip">
+      <span class="en">Cash / Bit Only</span>
+      <span class="dot">•</span>
+      <span class="he">התשלום במזומן . ביט בלבד</span>
+    </div>
+
+    <div class="pay-body">
+      <div class="big-qr" data-slot="bit-qr">
+        <!--BIT_QR-->
+      </div>
+
+      <div class="payee">Payment to <b>דן מאור</b></div>
+      <div class="scan-en">Scan to Pay</div>
+      <div class="scan-he">סרקו לתשלום</div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <div>
+            <div class="t-en">Scan the code with your phone camera</div>
+            <div class="t-he">סרקו את הקוד עם מצלמת הטלפון</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <div class="t-en">Enter the amount from the menu</div>
+            <div class="t-he">הזינו את הסכום לפי התפריט</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div>
+            <div class="t-en">Confirm in Bit — then show us the confirmation</div>
+            <div class="t-he">אשרו בביט — והציגו לנו את האישור</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="amount-note">
+        <div class="en">Please show the payment confirmation screen before taking your merch.</div>
+        <div class="he">נא להציג את מסך אישור התשלום לפני קבלת המרצ'נדייז.</div>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <div>
+        <div class="note">No credit cards at the stand.</div>
+        <div class="note note-he">לא מתקבלים כרטיסי אשראי בדוכן.</div>
+      </div>
+      <div class="badge">Bit</div>
+    </footer>
+  </div>
+</body>
+</html>
