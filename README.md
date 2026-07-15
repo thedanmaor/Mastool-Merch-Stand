@@ -42,24 +42,27 @@ in either column.
 
 ---
 
-## OPEN ITEMS — both block printing
+## OPEN ITEMS
 
-1. **VIP signup QR currently points at the Bit link (placeholder).**
-   Once the VIP page is hosted, replace `4_source/assets/vip-qr.png` (or
-   regenerate from the real URL) and rebuild. As-is, scanning the menu's
-   "Sign Up to VIP" panel opens the Bit payment page.
-
-   **VIP page needs a hosted URL.**
-   `MasTool_VIP_Signup.html` has `FORM_ENDPOINT = "PASTE_YOUR_FORM_ENDPOINT_HERE"`
-   at the top of its `<script>`. Set it (Formspree / Google Apps Script / Airtable),
-   host the page, then the signup QR can be generated from the live URL and
-   dropped into the menu. **Until the page has a URL, there is no QR to print.**
+1. ~~VIP signup QR~~ **DONE.** VIP page is hosted at
+   `https://thedanmaor.github.io/Mastool-Merch-Stand/` (GitHub Pages, served
+   from `docs/`). `4_source/assets/vip-qr.png` was regenerated from that live
+   URL (ECC level Q, matches the Bit QR's style) and the menu was rebuilt —
+   scanning the menu's "Sign Up to VIP" panel now opens the real VIP page.
 
 2. ~~Bit QR~~ **DONE.** Payment card carries the live Bit QR
    (payee: דן מאור). Regenerated at print resolution with ECC level Q,
    prints ~83mm across, verified to decode from the final master.
 
+Nothing currently blocks printing.
+
 ## Operational note
 The 21:00 hold policy printed on the menu requires someone at the stand keeping
 a named list and physically setting items aside. With only 14 of each poster,
 decide in advance whether VIP holds are capped and who runs the list.
+
+VIP signup now lets fans pre-select items (T-Shirt + size, Event Poster, Limited
+Edition Art Poster) before submitting. On success they get a ticket-style popup
+with their name and picks to show at the stand. The signups sheet has matching
+`Shirt` / `Shirt Size` / `Event Poster` / `Ltd Poster` columns — cross-check
+these against the hold list at 21:00.
