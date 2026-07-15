@@ -26,8 +26,10 @@
   .perks{ position:relative; z-index:1; padding:26px 26px 6px; }
   .perks h2{
     font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
-    letter-spacing:.12em; font-size:14px; color:var(--green); margin-bottom:14px;
+    letter-spacing:.1em; font-size:22px; color:var(--green); margin-bottom:16px;
+    text-align:center;
   }
+  .perks h2 .he{ font-size:15px; }
   .perk{
     display:grid; grid-template-columns:22px 1fr; gap:12px;
     align-items:start; padding:11px 0; border-bottom:1px solid var(--line);
@@ -57,6 +59,35 @@
     border-radius:2px; outline:none;
   }
   .field input:focus{ border-color:var(--green); background:#fff; }
+
+  .merch{ margin:18px 0 4px; }
+  .merch-h{
+    font-family:'Oswald',sans-serif; font-weight:500;
+    text-transform:uppercase; letter-spacing:.1em; font-size:11px;
+    color:var(--green); margin-bottom:6px;
+  }
+  .merch-h .he{
+    font-family:'Heebo',sans-serif; text-transform:none; letter-spacing:0;
+    color:var(--green-soft); font-size:12px; float:right; direction:rtl;
+  }
+  .merch-item{
+    display:grid; grid-template-columns:20px 46px 1fr; gap:10px;
+    align-items:center; padding:9px 0; border-bottom:1px solid var(--line);
+  }
+  .merch-item:last-child{ border-bottom:none; }
+  .merch-item input[type=checkbox]{ width:18px; height:18px; accent-color:var(--green); align-self:start; margin-top:4px; }
+  .merch-thumb{
+    width:46px; height:46px; object-fit:cover; border-radius:2px;
+    border:1px solid var(--line); background:#fff; flex:none;
+  }
+  .merch-item .en{ font-size:13.5px; font-weight:600; color:var(--ink); }
+  .merch-item .he{ direction:rtl; font-size:12.5px; color:var(--green-soft); margin-top:2px; }
+  .shirt-size{ display:none; margin-top:8px; }
+  .shirt-size.show{ display:block; }
+  .shirt-size select{
+    width:100%; padding:9px 10px; background:#FBF6EA; border:1px solid var(--line);
+    font-family:'Heebo',sans-serif; font-size:14px; color:var(--ink); border-radius:2px;
+  }
 
   .consent{
     display:grid; grid-template-columns:20px 1fr; gap:10px;
@@ -103,6 +134,54 @@
     color:var(--green-soft); line-height:1.6; text-align:center;
   }
   .fineprint .he{ direction:rtl; }
+
+  .ticket-overlay{
+    display:none; position:fixed; inset:0; z-index:50;
+    background:rgba(14,13,11,.78);
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .ticket-overlay.show{ display:flex; }
+  .ticket-card{
+    position:relative; width:100%; max-width:380px;
+    background:var(--cream); border:1px solid var(--brass);
+    border-radius:4px; padding:34px 26px 26px; text-align:center;
+    box-shadow:0 24px 60px rgba(0,0,0,.5);
+  }
+  .ticket-close{
+    position:absolute; top:10px; right:14px; border:none; background:none;
+    font-size:24px; line-height:1; color:var(--green-soft); cursor:pointer;
+  }
+  .ticket-kicker{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.3em; text-indent:.3em; font-size:11px; color:var(--brass);
+  }
+  .ticket-kicker .he{ font-family:'Heebo',sans-serif; letter-spacing:0; text-indent:0; direction:rtl; }
+  .ticket-headline{
+    font-family:'Anton',sans-serif; font-weight:400; font-size:38px; color:var(--green);
+    margin-top:14px; line-height:1;
+  }
+  .ticket-headline-he{ direction:rtl; font-size:18px; color:var(--green-soft); margin-top:6px; font-weight:700; }
+  .ticket-name{
+    margin-top:18px; font-family:'Oswald',sans-serif; font-weight:600;
+    font-size:20px; color:var(--ink); word-break:break-word;
+  }
+  .ticket-divider{ width:60%; height:1px; background:var(--line); margin:16px auto; }
+  .ticket-sub{ font-size:12.5px; color:var(--green-soft); line-height:1.5; }
+  .ticket-sub-he{ direction:rtl; font-size:12px; color:var(--green-soft); margin-top:3px; line-height:1.5; }
+  .ticket-items{ margin-top:16px; text-align:left; }
+  .ticket-item{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    padding:8px 0; border-bottom:1px solid var(--line);
+  }
+  .ticket-item:last-child{ border-bottom:none; }
+  .ticket-item .en{ font-size:13.5px; font-weight:600; color:var(--ink); }
+  .ticket-item .he{ direction:rtl; font-size:12px; color:var(--green-soft); margin-top:1px; }
+  .ticket-item .tag{
+    font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--brass); border:1px solid var(--brass); padding:3px 8px; border-radius:2px; white-space:nowrap;
+  }
+  .ticket-empty{ font-size:12.5px; color:var(--green-soft); text-align:center; padding:6px 0; }
+  .ticket-footer{ margin-top:20px; font-size:10.5px; color:var(--green-soft); letter-spacing:.03em; }
 </style>
 </head>
 <body>
@@ -112,7 +191,7 @@
     <header class="hero">
       <!--LOGO-->
       <div class="kicker">VIP Club</div>
-      <div class="kicker-he">מועדון ה-VIP</div>
+      <div class="kicker-he">מועדון האח"מים</div>
       <div class="rule"></div>
     </header>
 
@@ -176,6 +255,48 @@
         <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="you@example.com">
       </div>
 
+      <div class="merch">
+        <div class="merch-h">Pre-select your items <span class="he">/ בחרו פריטים מראש</span></div>
+
+        <div class="merch-item">
+          <input type="checkbox" id="m-shirt">
+          <!--THUMB_SHIRT-->
+          <div>
+            <label for="m-shirt" style="margin:0">
+              <div class="en">T-Shirt</div>
+              <div class="he">חולצה</div>
+            </label>
+            <div class="shirt-size" id="shirtSizeWrap">
+              <select id="shirtSize">
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="merch-item">
+          <input type="checkbox" id="m-event">
+          <!--THUMB_EVENT-->
+          <label for="m-event" style="margin:0">
+            <div class="en">Event Poster</div>
+            <div class="he">פוסטר הופעה</div>
+          </label>
+        </div>
+
+        <div class="merch-item">
+          <input type="checkbox" id="m-ltd">
+          <!--THUMB_ART-->
+          <label for="m-ltd" style="margin:0">
+            <div class="en">Limited Edition Art Poster</div>
+            <div class="he">פוסטר מהדורה מוגבלת</div>
+          </label>
+        </div>
+      </div>
+
       <div class="consent">
         <input type="checkbox" id="consent">
         <label for="consent" style="margin:0">
@@ -185,7 +306,7 @@
       </div>
 
       <button class="btn" id="submit">Join the VIP Club</button>
-      <div class="btn-he">הצטרפו למועדון ה-VIP</div>
+      <div class="btn-he">הצטרפו למועדון האח"מים</div>
 
       <div class="msg" id="msg"></div>
     </section>
@@ -198,6 +319,21 @@
     <div class="fineprint">
       <div>MasTool · Gagarin Club, Tel Aviv · 13 August 2026</div>
       <div class="he">ניתן להסיר את ההרשמה בכל עת.</div>
+    </div>
+  </div>
+
+  <div class="ticket-overlay" id="ticketOverlay">
+    <div class="ticket-card">
+      <button class="ticket-close" id="ticketClose" aria-label="Close">&times;</button>
+      <div class="ticket-kicker">VIP Club <span class="he">/ מועדון VIP</span></div>
+      <div class="ticket-headline">You're In</div>
+      <div class="ticket-headline-he">נרשמת!</div>
+      <div class="ticket-name" id="ticketName"></div>
+      <div class="ticket-divider"></div>
+      <div class="ticket-sub">Show this at checkout for VIP pricing</div>
+      <div class="ticket-sub-he">הציגו את המסך הזה לקבלת מחירי VIP בדוכן</div>
+      <div class="ticket-items" id="ticketItems"></div>
+      <div class="ticket-footer">Gagarin Club, Tel Aviv · 13 August 2026</div>
     </div>
   </div>
 
@@ -219,11 +355,38 @@
     msg.innerHTML = '<div>' + en + '</div><div class="he">' + he + '</div>';
   }
 
+  $("m-shirt").addEventListener("change", () => {
+    $("shirtSizeWrap").classList.toggle("show", $("m-shirt").checked);
+  });
+
+  function showTicket(name, items) {
+    $("ticketName").textContent = name;
+    const wrap = $("ticketItems");
+    if (!items.length) {
+      wrap.innerHTML = '<div class="ticket-empty">No items pre-selected — browse at the stand<br><span class="he">לא נבחרו פריטים מראש — אפשר לעיין בדוכן</span></div>';
+    } else {
+      wrap.innerHTML = items.map(it =>
+        '<div class="ticket-item"><div><div class="en">' + it.en + '</div><div class="he">' + it.he + '</div></div>' +
+        (it.tag ? '<span class="tag">' + it.tag + '</span>' : '') + '</div>'
+      ).join('');
+    }
+    $("ticketOverlay").classList.add("show");
+  }
+
+  $("ticketClose").addEventListener("click", () => $("ticketOverlay").classList.remove("show"));
+  $("ticketOverlay").addEventListener("click", (e) => {
+    if (e.target.id === "ticketOverlay") $("ticketOverlay").classList.remove("show");
+  });
+
   $("submit").addEventListener("click", async () => {
     const name    = $("name").value.trim();
     const phone   = $("phone").value.trim();
     const email   = $("email").value.trim();
     const consent = $("consent").checked;
+    const shirt       = $("m-shirt").checked;
+    const shirtSize   = shirt ? $("shirtSize").value : "";
+    const eventPoster = $("m-event").checked;
+    const ltdPoster   = $("m-ltd").checked;
 
     if (!name || !phone) {
       show("err", "Please enter your name and phone.", "נא למלא שם וטלפון.");
@@ -249,6 +412,7 @@
         body: JSON.stringify({
           name, phone, email,
           consent: true,
+          shirt, shirtSize, eventPoster, ltdPoster,
           source: "merch-stand-qr",
           show: "Gagarin 2026-08-13",
           ts: new Date().toISOString()
@@ -256,10 +420,13 @@
       });
       if (!res.ok) throw new Error("bad status " + res.status);
 
-      show("ok", "You're in. See you at the stand — show this at checkout for VIP pricing.",
-                 "נרשמת! נתראה בדוכן — הציגו את המסך הזה לקבלת מחירי VIP.");
-      btn.style.display = "none";
-      document.querySelector(".btn-he").style.display = "none";
+      const items = [];
+      if (shirt) items.push({ en: "T-Shirt", he: "חולצה", tag: shirtSize });
+      if (eventPoster) items.push({ en: "Event Poster", he: "פוסטר הופעה" });
+      if (ltdPoster) items.push({ en: "Limited Edition Art Poster", he: "פוסטר מהדורה מוגבלת" });
+      showTicket(name, items);
+
+      document.querySelector(".form-wrap").style.display = "none";
     } catch (e) {
       show("err", "Something went wrong. Please try again or sign up at the stand.",
                   "משהו השתבש. נסו שוב או הירשמו בדוכן.");

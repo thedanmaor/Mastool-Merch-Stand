@@ -8,18 +8,19 @@ For every piece, emits three files:
    *_preview.png           low-res preview for sharing / approval
 
 Drop-in QR codes:
-   put  vip-qr.png  and/or  bit-qr.png  in /home/claude/assets/
+   put  vip-qr.png  and/or  bit-qr.png  in assets/
    and they are composited automatically. Otherwise a dashed slot is drawn.
 """
 import base64, pathlib
 from playwright.sync_api import sync_playwright
 from PIL import Image
 
-SRC    = pathlib.Path("/home/claude/src")
-FONTS  = pathlib.Path("/home/claude/fonts")
-ASSETS = pathlib.Path("/home/claude/assets")
-OUT    = pathlib.Path("/mnt/user-data/outputs")
-LOGO   = pathlib.Path("/mnt/user-data/uploads/logo-white-transparent.png")
+HERE   = pathlib.Path(__file__).parent
+SRC    = HERE
+FONTS  = HERE
+ASSETS = HERE / "assets"
+OUT    = HERE / "_build"
+LOGO   = ASSETS / "logo_trim.png"
 OUT.mkdir(parents=True, exist_ok=True)
 ASSETS.mkdir(parents=True, exist_ok=True)
 
@@ -43,12 +44,12 @@ FONT_CSS = """<style>
     heebo=b64_file(FONTS / "heebo.woff2"),
 )
 
-BASE_CSS = "<style>\n" + (SRC / "base.css").read_text() + "\n</style>"
+BASE_CSS = "<style>\n" + (SRC / "base.css").read_text(encoding="utf-8") + "\n</style>"
 
-# trim the logo's transparent padding once, reuse everywhere
+# logo is already trimmed (extracted from prior build) — reuse as-is
 _lg = Image.open(LOGO).convert("RGBA")
 _lg = _lg.crop(_lg.getchannel("A").getbbox())
-_lg.save("/home/claude/assets/logo_trim.png")
+_lg.save(ASSETS / "logo_trim.png")
 LOGO_TAG    = f'<img class="wordmark-img" src="data:image/png;base64,{b64_file(ASSETS/"logo_trim.png")}" alt="MasTool">'
 LOGO_TAG_SM = LOGO_TAG.replace('class="wordmark-img"', 'class="wordmark-img wordmark-img--sm"')
 
@@ -66,6 +67,10 @@ def qr_tag(name, label_en, label_he):
     if f.exists():
         return f'<img src="data:image/png;base64,{b64_file(f)}" alt="{label_en} QR">'
     return f'<div class="hint">{label_en}<br>QR<br><span class="he">{label_he}</span></div>'
+
+def thumb_tag(name, alt):
+    f = ASSETS / "thumbs" / f"{name}.png"
+    return f'<img class="merch-thumb" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
 
 # ---------------------------------------------------------------- pages
 PAGES = [
@@ -95,17 +100,20 @@ with sync_playwright() as p:
     browser = p.chromium.launch()
 
     for src, stem, size, logo, vw in PAGES:
-        html = (SRC / src).read_text()
+        html = (SRC / src).read_text(encoding="utf-8")
         html = (html
                 .replace("<!--FONTS-->",     FONT_CSS)
                 .replace("<!--BASE-->",      BASE_CSS)
                 .replace("<!--LOGO-->",      logo)
                 .replace("<!--WATERMARK-->", WATERMARK)
                 .replace("<!--VIP_QR-->",    qr_tag("vip-qr", "Scan to join VIP", "סרקו להצטרפות"))
-                .replace("<!--BIT_QR-->",    qr_tag("bit-qr", "Paste Bit QR here", "כאן ממקמים את קוד ה-QR")))
+                .replace("<!--BIT_QR-->",    qr_tag("bit-qr", "Paste Bit QR here", "כאן ממקמים את קוד ה-QR"))
+                .replace("<!--THUMB_SHIRT-->", thumb_tag("thumb_shirt", "T-Shirt"))
+                .replace("<!--THUMB_EVENT-->", thumb_tag("thumb_event", "Event Poster"))
+                .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster")))
 
         html_path = OUT / f"{stem}.html"
-        html_path.write_text(html)
+        html_path.write_text(html, encoding="utf-8")
 
         if size:                                    # print piece
             w_mm, h_mm = size

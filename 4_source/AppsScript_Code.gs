@@ -17,7 +17,7 @@ function doPost(e) {
   const sheet = ss.getSheetByName('Signups') || ss.insertSheet('Signups');
 
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Timestamp', 'Name', 'Phone', 'Email', 'Consent', 'Source', 'Show']);
+    sheet.appendRow(['Timestamp', 'Name', 'Phone', 'Email', 'Consent', 'Shirt', 'Shirt Size', 'Event Poster', 'Ltd Poster', 'Source', 'Show']);
   }
 
   const data = JSON.parse(e.postData.contents);
@@ -27,6 +27,10 @@ function doPost(e) {
     data.phone || '',
     data.email || '',
     data.consent === true,
+    data.shirt === true,
+    data.shirtSize || '',
+    data.eventPoster === true,
+    data.ltdPoster === true,
     data.source || '',
     data.show || ''
   ]);
