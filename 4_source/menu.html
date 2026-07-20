@@ -44,7 +44,7 @@
   .row{
     display:grid; grid-template-columns:60px 1fr 92px 74px 86px;
     align-items:center; gap:8px;
-    padding:8px 30px;
+    padding:6px 30px;
     border-bottom:1px solid var(--line);
   }
   .row:nth-child(even){ background:var(--cream-deep); }
@@ -130,8 +130,47 @@
     z-index:3;
   }
 
+  /* tighten QR panel on this page to fit the care strip within A4 */
+  .qr-panel{ padding:15px 30px; }
+
+  /* ---------- shirt care instructions ---------- */
+  .carestrip{
+    position:relative; z-index:1;
+    background:var(--cream-deep);
+    border-top:1px solid var(--line);
+    padding:8px 30px;
+    display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap;
+  }
+  .care-head{ text-align:right; direction:rtl; }
+  .care-head .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; font-size:10.5px; color:var(--green); direction:ltr; text-align:left;
+  }
+  .care-head .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:11px;
+    color:var(--green-soft); margin-top:1px;
+  }
+  .care-items{
+    display:flex; align-items:center; gap:24px; flex-wrap:wrap; justify-content:center;
+  }
+  .care-item{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    text-align:center; width:104px;
+  }
+  .care-item svg{ width:27px; height:27px; stroke:var(--ink); fill:none; stroke-width:1.5; }
+  .care-item .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.04em; font-size:9.5px; color:var(--ink); line-height:1.15;
+  }
+  .care-item .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:10px;
+    color:var(--green-soft); line-height:1.15;
+  }
+
   @media (max-width:520px){
     .col-head,.row{ grid-template-columns:52px 1fr 74px 66px 74px; padding-left:18px; padding-right:18px; }
+    .care-items{ gap:20px; }
+    .care-item{ width:100px; }
   }
 </style>
 </head>
@@ -255,6 +294,42 @@
       <span class="en">Cash / Bit Only</span>
       <span class="dot">•</span>
       <span class="he">התשלום במזומן / ביט בלבד</span>
+    </div>
+
+    <!-- shirt care instructions -->
+    <div class="carestrip">
+      <div class="care-head">
+        <div class="en">Shirt Care — Keep Your Print Looking Great</div>
+        <div class="he">הוראות כביסה — לשמירה על ההדפס לאורך זמן</div>
+      </div>
+      <div class="care-items">
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.5 7.5 H21.5 L19.7 20 H4.3 Z" stroke-linejoin="round"/>
+            <path d="M2.5 7.5 Q2.5 4.5 5.4 4.5 Q7 4.5 7.5 6" stroke-linecap="round"/>
+            <text x="12.3" y="16.4" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="7.5" fill="#1B1814" stroke="none">40</text>
+          </svg>
+          <div class="en">Machine Wash 40°</div>
+          <div class="he">כביסה עד °40</div>
+        </div>
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" stroke-linejoin="round"/>
+            <line x1="4.6" y1="4.6" x2="19.4" y2="19.4" stroke-linecap="round"/>
+            <line x1="19.4" y1="4.6" x2="4.6" y2="19.4" stroke-linecap="round"/>
+          </svg>
+          <div class="en">Do Not Tumble Dry</div>
+          <div class="he">לא לייבש במייבש</div>
+        </div>
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.5 16.5 H21.5 L19.6 11 Q18 8.8 11.5 8.8 L2.5 12.5 Z" stroke-linejoin="round"/>
+            <circle cx="12" cy="12.7" r="1.05" fill="#1B1814" stroke="none"/>
+          </svg>
+          <div class="en">Iron Low Heat</div>
+          <div class="he">לגהץ בחום נמוך</div>
+        </div>
+      </div>
     </div>
 
     <footer class="foot">

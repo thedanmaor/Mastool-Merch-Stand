@@ -66,3 +66,7 @@ Edition Art Poster) before submitting. On success they get a ticket-style popup
 with their name and picks to show at the stand. The signups sheet has matching
 `Shirt` / `Shirt Size` / `Event Poster` / `Ltd Poster` columns — cross-check
 these against the hold list at 21:00.
+
+The menu carries a bilingual (EN/HE) shirt-care strip at the foot of the page —
+machine wash 40°, do not tumble dry, iron low heat — as clean ink-stroke laundry
+symbols matching the sheet's palette and type.
