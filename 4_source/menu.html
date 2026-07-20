@@ -65,6 +65,8 @@
   .price .cur{ font-weight:500; color:var(--green-soft); margin-left:1px; }
   .price.vip{ color:var(--brass); }
 
+  /* bundle names are the longest — keep them on one line */
+  .row.bundle .item-en{ white-space:nowrap; font-size:clamp(14px,3vw,18px); }
   .row.bundle{ background:var(--cream-warm); }
   .row.allin{ background:var(--green); }
   .row.allin .item-en{ color:var(--cream); }
@@ -171,6 +173,7 @@
 
   @media (max-width:520px){
     .col-head,.row{ grid-template-columns:52px 1fr 74px 66px 74px; padding-left:18px; padding-right:18px; }
+    .row.bundle .item-en{ white-space:normal; }
     .care-items{ gap:20px; }
     .care-item{ width:100px; }
   }
