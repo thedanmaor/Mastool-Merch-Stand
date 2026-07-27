@@ -72,10 +72,23 @@ def thumb_tag(name, alt):
     f = ASSETS / "thumbs" / f"{name}.png"
     return f'<img class="merch-thumb" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
 
+def photo_slot(name, alt):
+    """Product photo if dropped into assets/thumbs/, else a dashed placeholder box."""
+    f = ASSETS / "thumbs" / f"{name}.png"
+    if f.exists():
+        return f'<img class="pend-photo" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
+    return (f'<div class="thumb-slot" title="{alt}">'
+            '<svg viewBox="0 0 24 24" aria-hidden="true">'
+            '<rect x="3.2" y="5.6" width="17.6" height="13.2" rx="1.6"/>'
+            '<circle cx="12" cy="12.4" r="3.4"/>'
+            '<path d="M8.6 5.6 L10 3.4 h4 l1.4 2.2" stroke-linejoin="round"/>'
+            '</svg></div>')
+
 # ---------------------------------------------------------------- pages
 PAGES = [
     # (source, output stem, page w x h in mm, logo tag, viewport width px)
     ("menu.html", "MasTool_Merch_Menu",     (210, 297), LOGO_TAG,    794),
+    ("anima.html","MasTool_Anima_Concrete", (148, 210), LOGO_TAG_SM, 559),  # A5 collab sheet
     ("bit.html",  "MasTool_Bit_Payment",    (210, 297), LOGO_TAG,    794),
     ("vip.html",  "MasTool_VIP_Signup",     None,       LOGO_TAG_SM, 430),  # web page, no print size
 ]
@@ -110,7 +123,12 @@ with sync_playwright() as p:
                 .replace("<!--BIT_QR-->",    qr_tag("bit-qr", "Paste Bit QR here", "כאן ממקמים את קוד ה-QR"))
                 .replace("<!--THUMB_SHIRT-->", thumb_tag("thumb_shirt", "T-Shirt"))
                 .replace("<!--THUMB_EVENT-->", thumb_tag("thumb_event", "Event Poster"))
-                .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster")))
+                .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster"))
+                .replace("<!--PEND_BLACK-->",  photo_slot("pend_black",  "Concrete pendant, black string"))
+                .replace("<!--PEND_GOLD-->",   photo_slot("pend_gold",   "Concrete pendant, gold string"))
+                .replace("<!--PEND_SHIRT-->",  photo_slot("pend_shirt",  "Pendant + T-Shirt"))
+                .replace("<!--PEND_POSTER-->", photo_slot("pend_poster", "Pendant + Event Poster"))
+                .replace("<!--PEND_ALL-->",    photo_slot("pend_all",    "Concrete All In")))
 
         html_path = OUT / f"{stem}.html"
         html_path.write_text(html, encoding="utf-8")
