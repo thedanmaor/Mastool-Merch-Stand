@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&ldquo;Duba&rdquo; × MasTool — Guest Artist Shirt</title>
+<!--FONTS-->
+<!--BASE-->
+<style>
+  :root{
+    --red:     #B0342A;   /* discount sticker */
+    --gold:    #9A742A;
+    --gold-he: #A8823A;
+  }
+
+  /* ---------- header: guest-artist lockup ---------- */
+  .header--tight{ padding:15px 22px 11px; }
+  .wordmark-img--sm{ width:min(68%,272px); margin:2px auto 0; }
+  .guesting{
+    font-family:'Oswald',sans-serif; font-weight:500; text-transform:uppercase;
+    letter-spacing:.16em; font-size:9.5px; color:#C9BB97;
+    border:1px solid #4A4237; border-radius:2px;
+    display:inline-block; padding:4px 10px; margin-top:9px;
+  }
+  .guesting .he{
+    font-family:'Heebo',sans-serif; direction:rtl; letter-spacing:0;
+    text-transform:none; font-size:10px; margin-right:6px; color:#B7AA8C;
+  }
+  .collab{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.22em; text-indent:.22em; font-size:12px;
+    color:var(--brass); margin-top:9px;
+  }
+  .collab .x{ color:#8E8065; margin:0 4px; }
+
+  /* ---------- column head ---------- */
+  .col-head{
+    display:grid; grid-template-columns:44px 1fr 68px 62px 66px;
+    align-items:end; gap:6px;
+    padding:13px 20px 9px;
+    border-bottom:2px solid var(--green);
+    position:relative; z-index:1;
+  }
+  .col-head .ch{
+    font-family:'Oswald', sans-serif; text-transform:uppercase;
+    letter-spacing:.11em; font-size:9.5px; color:var(--green);
+    font-weight:600; text-align:right; line-height:1.25;
+  }
+  .col-head .ch.item{ text-align:left; }
+  .col-head .ch.vip{ color:var(--brass); }
+  .col-head .ch small{
+    font-family:'Heebo', sans-serif;
+    display:block; font-weight:500; letter-spacing:.02em;
+    font-size:9px; opacity:.85; direction:rtl;
+  }
+
+  /* ---------- rows ---------- */
+  .rows{ position:relative; z-index:1; }
+  .row{
+    display:grid; grid-template-columns:44px 1fr 68px 62px 66px;
+    align-items:center; gap:6px;
+    padding:5px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .row:nth-child(even){ background:var(--cream-deep); }
+  .row.bundle{ background:var(--cream-warm); }
+  .row.allin{ background:var(--green); }
+  .row.allin .item-en{ color:var(--cream); }
+  .row.allin .item-he{ color:#CADBC0; }
+  .row.allin .price{ color:var(--cream); }
+  .row.allin .price.vip{ color:var(--brass-lite); }
+  .row.allin .price .cur{ color:#A9C0A8; }
+  .row.allin .tag{ background:var(--cream); color:var(--green); }
+
+  .item-en{
+    font-family:'Oswald', sans-serif; font-weight:600;
+    font-size:15px; letter-spacing:.01em;
+    color:var(--ink); line-height:1.1; text-transform:uppercase;
+  }
+  .row.bundle .item-en{ font-size:13px; }
+  .item-he{
+    direction:rtl; font-weight:500; font-size:12px;
+    color:var(--green-soft); margin-top:2px;
+  }
+  .item-note{
+    font-family:'Oswald',sans-serif; font-size:8.5px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--green-soft); margin-top:2px; line-height:1.3;
+  }
+  .item-note .he{
+    font-family:'Heebo',sans-serif; direction:rtl; display:block;
+    font-size:9px; letter-spacing:0; text-transform:none;
+  }
+  .tag{
+    display:inline-block; font-family:'Oswald',sans-serif; font-size:8.5px;
+    letter-spacing:.14em; text-transform:uppercase;
+    background:var(--brass); color:#1B1814;
+    padding:2px 6px; border-radius:2px; margin-left:8px;
+    vertical-align:middle; font-weight:600;
+  }
+  .tag--limit{ background:var(--red); color:#FCEFE9; }
+
+  /* ---------- prices ---------- */
+  .price{
+    text-align:right; font-weight:700; font-size:16px;
+    color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  .price .cur{ font-weight:500; color:var(--green-soft); margin-left:1px; }
+  .price.vip{ color:var(--brass); }
+  .item-en .gold{ color:var(--gold); }
+  .item-he .gold{ color:var(--gold-he); font-weight:600; }
+  .vip-cell{ text-align:right; }
+  .num{ white-space:nowrap; }
+
+  .sticker-cell{ display:flex; justify-content:flex-end; align-items:center; padding-right:2px; }
+  .sticker{
+    transform:rotate(-6deg); flex:none;
+    background:var(--red); color:#FCEFE9;
+    font-family:'Oswald', sans-serif; font-weight:600;
+    font-size:8.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:3px 5px; border-radius:2px;
+    box-shadow:0 2px 5px rgba(0,0,0,.32);
+    white-space:nowrap; z-index:3;
+  }
+
+  /* ---------- shirt thumb: real photo, or dashed placeholder until shot ---------- */
+  .thumb{ display:flex; align-items:center; justify-content:center; }
+  .duba-photo{
+    width:40px; height:40px; object-fit:contain; display:block;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));
+  }
+  .thumb-slot{
+    width:40px; height:40px; flex:none;
+    background:#fff; border:1.5px dashed var(--green-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .thumb-slot svg{ width:20px; height:20px; stroke:var(--green-soft); fill:none; stroke-width:1.3; }
+  .row.allin .thumb-slot{ background:none; border-color:#8FA88E; }
+  .row.allin .thumb-slot svg{ stroke:#CADBC0; }
+
+  /* ---------- sizes ---------- */
+  .sizestrip{
+    position:relative; z-index:1;
+    background:var(--cream-deep);
+    border-top:1px solid var(--line);
+    padding:5px 20px;
+    display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+  }
+  .sizestrip .lbl{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; font-size:9.5px; color:var(--green);
+  }
+  .sizestrip .lbl .he{
+    font-family:'Heebo',sans-serif; direction:rtl; display:block;
+    font-size:10px; letter-spacing:0; text-transform:none;
+    color:var(--green-soft); margin-top:1px;
+  }
+  .sizes{ display:flex; gap:6px; flex-wrap:wrap; }
+  .sizes span{
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:10px;
+    letter-spacing:.06em; color:var(--ink);
+    border:1px solid var(--line); background:#fff;
+    padding:2px 7px; border-radius:2px;
+  }
+
+  /* ---------- care ---------- */
+  .carestrip{
+    position:relative; z-index:1;
+    background:var(--cream-warm);
+    border-top:1px solid var(--line);
+    padding:6px 20px;
+    display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap;
+  }
+  .care-head .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; font-size:9.5px; color:var(--green);
+  }
+  .care-head .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:10px;
+    color:var(--green-soft); margin-top:1px;
+  }
+  .care-items{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center; }
+  .care-item{
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    text-align:center; width:88px;
+  }
+  .care-item svg{ width:22px; height:22px; stroke:var(--ink); fill:none; stroke-width:1.5; }
+  .care-item .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.04em; font-size:8.5px; color:var(--ink); line-height:1.15;
+  }
+  .care-item .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:9px;
+    color:var(--green-soft); line-height:1.15;
+  }
+
+  /* ---------- no-hold policy (opposite of the MasTool hold policy) ---------- */
+  .holdstrip{
+    position:relative; z-index:1;
+    background:var(--red); color:#FCEFE9;
+    padding:7px 20px; text-align:center;
+    border-top:1px solid var(--line);
+  }
+  .holdstrip .en{ font-size:9.5px; line-height:1.45; }
+  .holdstrip .he{ direction:rtl; font-size:9.5px; line-height:1.45; color:#F3D9D3; margin-top:2px; }
+  .holdstrip b{ color:#fff; font-weight:700; }
+
+  .paystrip{ padding:8px 16px; gap:10px; }
+  .paystrip .en{ font-size:12px; }
+  .paystrip .he{ font-size:12px; }
+  .foot{ padding:8px 20px 10px; }
+  .foot .note{ font-size:9.5px; }
+  .badge{ font-size:9.5px; padding:4px 8px; }
+</style>
+</head>
+<body>
+  <div class="sheet sheet--a5">
+    <!--WATERMARK-->
+
+    <header class="header header--tight">
+      <!--LOGO-->
+      <div class="guesting">Guest Artist at Our Booth <span class="he">אמן אורח בדוכן שלנו</span></div>
+      <div class="collab">&ldquo;Duba&rdquo; <span class="x">×</span> MasTool</div>
+      <div class="subtitle" style="letter-spacing:.3em;text-indent:.3em;font-size:12px;margin-top:8px;">Special Edition Shirt · Very Limited</div>
+      <div class="subtitle-he" style="font-size:13px;">חולצת מהדורה מיוחדת · כמות מוגבלת מאוד</div>
+      <div class="rule" style="margin-top:10px;"></div>
+    </header>
+
+    <div class="col-head">
+      <div></div>
+      <div class="ch item">Piece <small>פריט</small></div>
+      <div class="ch">Regular <small>מחיר רגיל</small></div>
+      <div></div>
+      <div class="ch vip">VIP Discount <small>הנחת VIP</small></div>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="thumb"><!--DUBA_SHIRT--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
+          <div class="item-he">חולצת ״דובה״</div>
+          <div class="item-note">Max 3 per person<span class="he">עד 3 יחידות לאדם</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>100</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>20 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>80</span></div>
+      </div>
+
+      <!-- bundles: the Duba shirt counts as a shirt in every MasTool bundle -->
+      <div class="row bundle">
+        <div class="thumb"><!--DUBA_EVENT--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt + Event Poster</div>
+          <div class="item-he">חולצת ״דובה״ + פוסטר האירוע</div>
+        </div>
+        <div class="price"><span class="cur">₪</span>200</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>30 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>170</span></div>
+      </div>
+
+      <div class="row bundle">
+        <div class="thumb"><!--DUBA_ART--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt + <span class="gold">Limited Edition Art Poster</span></div>
+          <div class="item-he">חולצת ״דובה״ + <span class="gold">פוסטר מהדורה מוגבלת</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>230</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>30 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>200</span></div>
+      </div>
+
+      <div class="row bundle">
+        <div class="thumb"><!--DUBA_PENDANT--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt + Concrete Pendant</div>
+          <div class="item-he">חולצת ״דובה״ + תליון בטון</div>
+          <div class="item-note">Pendants by @anima_concrete · gold string +₪100<span class="he">תליוני בטון · שרוך זהב בתוספת ₪100</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>220</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>30 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>190</span></div>
+      </div>
+
+      <div class="row allin">
+        <div class="thumb"><!--DUBA_ALL--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; All In <span class="tag">Best Deal</span></div>
+          <div class="item-he">הכל כלול · ״דובה״</div>
+          <div class="item-note" style="color:#A9C0A8;">Shirt + event poster + limited edition art poster<span class="he" style="color:#A9C0A8;">חולצה + פוסטר האירוע + פוסטר מהדורה מוגבלת</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>330</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>50 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>280</span></div>
+      </div>
+    </div>
+
+    <!-- sizes -->
+    <div class="sizestrip">
+      <div class="lbl">Sizes — While Stock Lasts<span class="he">מידות — עד גמר המלאי</span></div>
+      <div class="sizes"><span>M</span><span>L</span><span>XL</span><span>2XL</span><span>3XL</span></div>
+    </div>
+
+    <!-- shirt care -->
+    <div class="carestrip">
+      <div class="care-head">
+        <div class="en">Shirt Care</div>
+        <div class="he">הוראות כביסה</div>
+      </div>
+      <div class="care-items">
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.5 7.5 H21.5 L19.7 20 H4.3 Z" stroke-linejoin="round"/>
+            <path d="M2.5 7.5 Q2.5 4.5 5.4 4.5 Q7 4.5 7.5 6" stroke-linecap="round"/>
+            <text x="12.3" y="16.4" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="7.5" fill="#1B1814" stroke="none">40</text>
+          </svg>
+          <div class="en">Machine Wash 40°</div>
+          <div class="he">כביסה עד °40</div>
+        </div>
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" stroke-linejoin="round"/>
+            <line x1="4.6" y1="4.6" x2="19.4" y2="19.4" stroke-linecap="round"/>
+            <line x1="19.4" y1="4.6" x2="4.6" y2="19.4" stroke-linecap="round"/>
+          </svg>
+          <div class="en">Do Not Tumble Dry</div>
+          <div class="he">לא לייבש במייבש</div>
+        </div>
+        <div class="care-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.5 16.5 H21.5 L19.6 11 Q18 8.8 11.5 8.8 L2.5 12.5 Z" stroke-linejoin="round"/>
+            <circle cx="12" cy="12.7" r="1.05" fill="#1B1814" stroke="none"/>
+          </svg>
+          <div class="en">Iron Low Heat</div>
+          <div class="he">לגהץ בחום נמוך</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- no holds: this shirt is sold on the spot only -->
+    <div class="holdstrip">
+      <div class="en"><b>No holds on this shirt</b> — sold on the spot, first come first served. Max 3 per person.</div>
+      <div class="he"><b>אין שמירה על חולצה זו</b> — נמכרת במקום, כל הקודם זוכה. עד 3 יחידות לאדם.</div>
+    </div>
+
+    <!-- payment terms -->
+    <div class="paystrip">
+      <span class="en">Cash / Bit Only</span>
+      <span class="dot">•</span>
+      <span class="he">התשלום במזומן / ביט בלבד</span>
+    </div>
+
+    <footer class="foot">
+      <div>
+        <div class="note">Prices in ILS (₪). VIP column = VIP discount.</div>
+        <div class="note note-he">המחירים בש״ח. עמודת VIP = הנחת VIP.</div>
+      </div>
+      <div class="badge">VIP Discount</div>
+    </footer>
+  </div>
+</body>
+</html>

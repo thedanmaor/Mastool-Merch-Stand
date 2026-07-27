@@ -89,6 +89,7 @@ PAGES = [
     # (source, output stem, page w x h in mm, logo tag, viewport width px)
     ("menu.html", "MasTool_Merch_Menu",     (210, 297), LOGO_TAG,    794),
     ("anima.html","MasTool_Anima_Concrete", (148, 210), LOGO_TAG_SM, 559),  # A5 collab sheet
+    ("duba.html", "MasTool_Duba_Shirt",     (148, 210), LOGO_TAG_SM, 559),  # A5 guest-artist sheet
     ("bit.html",  "MasTool_Bit_Payment",    (210, 297), LOGO_TAG,    794),
     ("vip.html",  "MasTool_VIP_Signup",     None,       LOGO_TAG_SM, 430),  # web page, no print size
 ]
@@ -128,7 +129,12 @@ with sync_playwright() as p:
                 .replace("<!--PEND_GOLD-->",   photo_slot("pend_gold",   "Concrete pendant, gold string"))
                 .replace("<!--PEND_SHIRT-->",  photo_slot("pend_shirt",  "Pendant + T-Shirt"))
                 .replace("<!--PEND_POSTER-->", photo_slot("pend_poster", "Pendant + Event Poster"))
-                .replace("<!--PEND_ALL-->",    photo_slot("pend_all",    "Concrete All In")))
+                .replace("<!--PEND_ALL-->",    photo_slot("pend_all",    "Concrete All In"))
+                .replace("<!--DUBA_SHIRT-->",  photo_slot("duba_shirt",  "Duba shirt"))
+                .replace("<!--DUBA_EVENT-->",  photo_slot("duba_event",  "Duba shirt + event poster"))
+                .replace("<!--DUBA_ART-->",    photo_slot("duba_art",    "Duba shirt + limited edition art poster"))
+                .replace("<!--DUBA_PENDANT-->",photo_slot("duba_pendant","Duba shirt + concrete pendant"))
+                .replace("<!--DUBA_ALL-->",    photo_slot("duba_all",    "Duba all in")))
 
         html_path = OUT / f"{stem}.html"
         html_path.write_text(html, encoding="utf-8")
