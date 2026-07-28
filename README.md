@@ -75,21 +75,26 @@ printed just below it.
    (payee: דן מאור). Regenerated at print resolution with ECC level Q,
    prints ~83mm across, verified to decode from the final master.
 
-3. **TODO — guest-artist product photos.** The two guest rows render dashed
-   placeholder boxes where the product photos go. Drop the real shots into
-   `4_source/assets/thumbs/` with these exact names and rerun `build.py` —
-   they are composited automatically, no code change needed:
+3. ~~Guest-artist product photos~~ **DONE.**
+   - **Concrete Pendant** — `4_source/assets/thumbs/pend_concrete.png`, cut out
+     of the supplied shot (background removed, 600×600 transparent PNG) and
+     shown on a lilac tile.
+   - **"Duba" Shirt** — deliberately has *no* photo. Every shirt is one of a
+     kind, so no single shot represents the row; it renders a mystery mark
+     (shirt outline + question mark) on a straw tile. Dropping a real
+     `duba_shirt.png` into `4_source/assets/thumbs/` would override it — only
+     do that if the row stops being a mystery.
 
-   | File | Row |
-   |---|---|
-   | `duba_shirt.png` | "Duba" Shirt |
-   | `pend_concrete.png` | Concrete Pendant |
+   Any photo dropped in there should be a square PNG, transparent or white
+   background, ≥400×400px. They render at 48px on the sheet (~17mm at print
+   size), `object-fit:contain`.
 
-   Square PNGs, transparent or white background, ≥400×400px. They render at
-   48px on the sheet (~17mm at print size), `object-fit:contain`.
+Nothing blocks printing.
 
-Nothing currently blocks printing except the photos above (the menu prints fine
-with the placeholders — they just look unfinished).
+### Sheet order (top to bottom)
+Header · price table · guest-artist rows · **Cash / Bit only** · hold policy ·
+shirt care · **VIP signup QR** · footnotes. Payment terms sit right under the
+prices; the VIP signup panel closes the sheet as the last call to action.
 
 ## Operational note
 The 21:00 hold policy printed on the menu requires someone at the stand keeping

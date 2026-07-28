@@ -11,7 +11,12 @@
     --red:     #B0342A;   /* discount sticker */
     --gold:    #9A742A;   /* limited edition, on cream */
     --gold-he: #A8823A;
+    --straw:      #F1E1AC; /* Duba tile — warm, sits in the brass/gold family */
+    --straw-edge: #C2A03B;
+    --lilac:      #E4DCEF; /* Anima tile — muted so it doesn't fight the brass */
+    --lilac-edge: #B0A0CB;
   }
+  .holdstrip .line2{ display:block; }
   .col-head{
     display:grid; grid-template-columns:60px 1fr 92px 74px 86px;
     align-items:end; gap:8px;
@@ -108,6 +113,14 @@
     display:flex; align-items:center; justify-content:center;
   }
   .thumb-slot svg{ width:24px; height:24px; stroke:var(--green-soft); fill:none; stroke-width:1.3; }
+  /* Duba shirts are one of a kind — the mystery mark is the artwork, not a placeholder */
+  .thumb-slot--mystery{ background:var(--straw); border:1.5px solid var(--straw-edge); }
+  .thumb-slot--mystery svg{ width:32px; height:32px; stroke:var(--green); stroke-width:1.2; }
+  /* guest-artist tiles: each artist gets one flat colour so the two rows read as a pair */
+  .thumb--anima .slot-photo{
+    box-sizing:border-box; padding:2px;
+    background:var(--lilac); border:1.5px solid var(--lilac-edge);
+  }
 
   /* ---------- limited edition: gold + star ---------- */
   .item-en.gold,
@@ -191,7 +204,8 @@
   .qr-copy .h-he{ margin-top:2px; }
   .why li{ margin-bottom:1px; }
   .why .en,.why .he{ line-height:1.2; }
-  .holdstrip{ padding:5px 30px; }
+  .holdstrip{ padding:4px 30px; }
+  .holdstrip .en,.holdstrip .he{ line-height:1.32; }
   .foot{ padding:3px 30px 5px; }
   .foot .note{ font-size:10.5px; line-height:1.25; letter-spacing:0; }
 
@@ -329,7 +343,7 @@
       </div>
 
       <div class="row">
-        <div class="thumb"><!--DUBA_SHIRT--></div>
+        <div class="thumb thumb--duba"><!--DUBA_SHIRT--></div>
         <div>
           <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
           <div class="item-he">חולצת ״דובה״</div>
@@ -342,7 +356,7 @@
       </div>
 
       <div class="row">
-        <div class="thumb"><!--PEND_CONCRETE--></div>
+        <div class="thumb thumb--anima"><!--PEND_CONCRETE--></div>
         <div>
           <div class="item-en">Concrete Pendant</div>
           <div class="item-he">תליון בטון</div>
@@ -356,39 +370,19 @@
       </div>
     </div>
 
-    <!-- VIP signup -->
-    <div class="qr-panel">
-      <div class="qr-slot" data-slot="vip-qr">
-        <!--VIP_QR-->
-      </div>
-      <div class="qr-copy">
-        <div class="h">Sign Up to VIP Here — Free</div>
-        <div class="h-he">להרשמה למועדון האח"מים סרקו כאן — בחינם</div>
-        <ul class="why">
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Up to ₪50 off every order</span>
-            <span class="he">עד ₪50 הנחה על כל הזמנה</span></li>
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Items held under your name for 2 hours from doors — limited editions won't sell out on you</span>
-            <span class="he">הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — המהדורה המוגבלת לא תיגמר לכם</span></li>
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Early notice on new shows &amp; drops, before they go public</span>
-            <span class="he">עדכון מוקדם על הופעות ומהדורות חדשות, לפני כולם</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- VIP hold policy -->
-    <div class="holdstrip">
-      <div class="en"><b>Hold policy:</b> VIP items are held under your name for two hours from doors — <b>21:00</b> for this show. After that, all remaining merch is released to the general public.</div>
-      <div class="he"><b>מדיניות שמירה:</b> הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — <b>21:00</b> בהופעה זו. לאחר מכן כל המרצ'נדייז שנותר ישוחרר לקהל הרחב.</div>
-    </div>
-
     <!-- payment terms -->
     <div class="paystrip">
       <span class="en">Cash / Bit Only</span>
       <span class="dot">•</span>
       <span class="he">התשלום במזומן / ביט בלבד</span>
+    </div>
+
+    <!-- VIP hold policy -->
+    <div class="holdstrip">
+      <div class="en"><b>Hold policy:</b> VIP items are held under your name for two hours from doors — <b>21:00</b> for this show.
+        <span class="line2">After that, all remaining merch is released to the general public.</span></div>
+      <div class="he"><b>מדיניות שמירה:</b> הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — <b>21:00</b> בהופעה זו.
+        <span class="line2">לאחר מכן כל המרצ'נדייז שנותר ישוחרר לקהל הרחב.</span></div>
     </div>
 
     <!-- shirt care instructions -->
@@ -427,14 +421,35 @@
       </div>
     </div>
 
+    <!-- VIP signup -->
+    <div class="qr-panel">
+      <div class="qr-slot" data-slot="vip-qr">
+        <!--VIP_QR-->
+      </div>
+      <div class="qr-copy">
+        <div class="h">Sign Up to VIP Here — Free</div>
+        <div class="h-he">להרשמה למועדון האח"מים סרקו כאן — בחינם</div>
+        <ul class="why">
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Up to ₪50 off every order</span>
+            <span class="he">עד ₪50 הנחה על כל הזמנה</span></li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Items held under your name for 2 hours from doors — limited editions won't sell out on you</span>
+            <span class="he">הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — המהדורה המוגבלת לא תיגמר לכם</span></li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Early notice on new shows &amp; drops, before they go public</span>
+            <span class="he">עדכון מוקדם על הופעות ומהדורות חדשות, לפני כולם</span></li>
+        </ul>
+      </div>
+    </div>
+
     <footer class="foot">
       <div>
-        <div class="note">Prices in ILS (₪). VIP column = VIP discount.</div>
-        <div class="note note-he">המחירים בש״ח. עמודת VIP = הנחת VIP.</div>
+        <div class="note">Prices in ILS (₪).</div>
+        <div class="note note-he">המחירים בש״ח.</div>
         <div class="note">Bundle prices apply to MasTool merch only.</div>
         <div class="note note-he">מחירי החבילות חלים על מרצ'נדייז של מסטול בלבד.</div>
       </div>
-      <div class="badge">VIP Discount</div>
     </footer>
   </div>
 </body>
