@@ -206,8 +206,9 @@
   .why .en,.why .he{ line-height:1.2; }
   .holdstrip{ padding:4px 30px; }
   .holdstrip .en,.holdstrip .he{ line-height:1.32; }
-  .foot{ padding:3px 30px 5px; }
-  .foot .note{ font-size:10.5px; line-height:1.25; letter-spacing:0; }
+  .foot{ padding:4px 24px; justify-content:center; gap:8px; flex-wrap:nowrap; white-space:nowrap; }
+  .foot .note{ font-size:9.5px; line-height:1.2; letter-spacing:0; }
+  .foot .sep{ font-size:9.5px; color:var(--green-soft); opacity:.55; }
 
   /* ---------- shirt care instructions ---------- */
   .carestrip{
@@ -444,12 +445,9 @@
     </div>
 
     <footer class="foot">
-      <div>
-        <div class="note">Prices in ILS (₪).</div>
-        <div class="note note-he">המחירים בש״ח.</div>
-        <div class="note">Bundle prices apply to MasTool merch only.</div>
-        <div class="note note-he">מחירי החבילות חלים על מרצ'נדייז של מסטול בלבד.</div>
-      </div>
+      <span class="note">Prices in ILS (₪) · bundles are MasTool merch only</span>
+      <span class="sep">•</span>
+      <span class="note note-he">המחירים בש״ח · החבילות חלות על מרצ'נדייז של מסטול בלבד</span>
     </footer>
   </div>
 </body>
