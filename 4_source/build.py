@@ -76,7 +76,7 @@ def photo_slot(name, alt):
     """Product photo if dropped into assets/thumbs/, else a dashed placeholder box."""
     f = ASSETS / "thumbs" / f"{name}.png"
     if f.exists():
-        return f'<img class="pend-photo" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
+        return f'<img class="slot-photo" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
     return (f'<div class="thumb-slot" title="{alt}">'
             '<svg viewBox="0 0 24 24" aria-hidden="true">'
             '<rect x="3.2" y="5.6" width="17.6" height="13.2" rx="1.6"/>'
@@ -88,8 +88,6 @@ def photo_slot(name, alt):
 PAGES = [
     # (source, output stem, page w x h in mm, logo tag, viewport width px)
     ("menu.html", "MasTool_Merch_Menu",     (210, 297), LOGO_TAG,    794),
-    ("anima.html","MasTool_Anima_Concrete", (148, 210), LOGO_TAG_SM, 559),  # A5 collab sheet
-    ("duba.html", "MasTool_Duba_Shirt",     (148, 210), LOGO_TAG_SM, 559),  # A5 guest-artist sheet
     ("bit.html",  "MasTool_Bit_Payment",    (210, 297), LOGO_TAG,    794),
     ("vip.html",  "MasTool_VIP_Signup",     None,       LOGO_TAG_SM, 430),  # web page, no print size
 ]
@@ -125,16 +123,8 @@ with sync_playwright() as p:
                 .replace("<!--THUMB_SHIRT-->", thumb_tag("thumb_shirt", "T-Shirt"))
                 .replace("<!--THUMB_EVENT-->", thumb_tag("thumb_event", "Event Poster"))
                 .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster"))
-                .replace("<!--PEND_BLACK-->",  photo_slot("pend_black",  "Concrete pendant, black string"))
-                .replace("<!--PEND_GOLD-->",   photo_slot("pend_gold",   "Concrete pendant, gold string"))
-                .replace("<!--PEND_SHIRT-->",  photo_slot("pend_shirt",  "Pendant + T-Shirt"))
-                .replace("<!--PEND_POSTER-->", photo_slot("pend_poster", "Pendant + Event Poster"))
-                .replace("<!--PEND_ALL-->",    photo_slot("pend_all",    "Concrete All In"))
-                .replace("<!--DUBA_SHIRT-->",  photo_slot("duba_shirt",  "Duba shirt"))
-                .replace("<!--DUBA_EVENT-->",  photo_slot("duba_event",  "Duba shirt + event poster"))
-                .replace("<!--DUBA_ART-->",    photo_slot("duba_art",    "Duba shirt + limited edition art poster"))
-                .replace("<!--DUBA_PENDANT-->",photo_slot("duba_pendant","Duba shirt + concrete pendant"))
-                .replace("<!--DUBA_ALL-->",    photo_slot("duba_all",    "Duba all in")))
+                .replace("<!--DUBA_SHIRT-->",    photo_slot("duba_shirt",    '"Duba" shirt'))
+                .replace("<!--PEND_CONCRETE-->", photo_slot("pend_concrete", "Concrete pendant")))
 
         html_path = OUT / f"{stem}.html"
         html_path.write_text(html, encoding="utf-8")

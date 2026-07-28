@@ -40,11 +40,12 @@
   @media (max-width:520px){
     .thumb img{ width:40px; height:40px; }
     .thumb--wide img{ width:52px; }
+    .slot-photo,.thumb-slot{ width:40px; height:40px; }
   }
   .row{
     display:grid; grid-template-columns:60px 1fr 92px 74px 86px;
     align-items:center; gap:8px;
-    padding:6px 30px;
+    padding:4px 30px;
     border-bottom:1px solid var(--line);
   }
   .row:nth-child(even){ background:var(--cream-deep); }
@@ -82,6 +83,18 @@
     vertical-align:middle; font-weight:600;
   }
   .row.allin .tag{ background:var(--cream); color:var(--green); }
+  .tag--limit{ background:var(--red); color:#FCEFE9; }
+
+  /* ---------- guest-artist items: standalone, never part of a bundle ---------- */
+  .row.guest{ border-top:2px solid var(--green); }
+  .slot-photo{ width:48px; height:48px; object-fit:contain; display:block;
+               filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+  .thumb-slot{
+    width:48px; height:48px; flex:none; background:#fff;
+    border:1.5px dashed var(--green-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .thumb-slot svg{ width:24px; height:24px; stroke:var(--green-soft); fill:none; stroke-width:1.3; }
 
   /* ---------- limited edition: gold + star ---------- */
   .item-en.gold,
@@ -97,13 +110,14 @@
   .row.allin .star{ color:var(--brass-lite); }
 
   .item-note{
-    font-family:'Oswald',sans-serif; font-size:9.5px; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--green-soft); margin-top:3px; line-height:1.3;
+    font-family:'Oswald',sans-serif; font-size:9px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--green-soft); margin-top:2px; line-height:1.25;
   }
   .item-note .he{
     font-family:'Heebo',sans-serif; direction:rtl; display:block;
-    font-size:10px; letter-spacing:0; text-transform:none;
+    font-size:9.5px; letter-spacing:0; text-transform:none;
   }
+  .item-note .handle{ text-transform:lowercase; }
 
   /* ---------- why join VIP ---------- */
   .why{ list-style:none; margin-top:4px; }
@@ -143,22 +157,25 @@
     z-index:3;
   }
 
-  /* tighten fixed-height blocks so the guest-artist row + footer stay within A4 */
-  .header{ padding:17px 24px 13px; }
-  .wordmark-img{ width:min(72%,400px); margin:4px auto 2px; }
-  .subtitle{ margin-top:10px; }
-  .rule{ margin-top:10px; }
-  .qr-panel{ padding:7px 30px; }
+  /* tighten fixed-height blocks so all eight rows + footer stay within A4 */
+  .header{ padding:13px 24px 9px; }
+  .wordmark-img{ width:min(72%,360px); margin:2px auto 1px; }
+  .subtitle{ margin-top:7px; }
+  .rule{ margin-top:7px; }
+  .qr-panel{ padding:5px 30px; }
   .qr-copy .h-he{ margin-top:2px; }
-  .foot{ padding:6px 30px 8px; }
-  .foot .note{ font-size:10.5px; line-height:1.3; letter-spacing:0; }
+  .why li{ margin-bottom:1px; }
+  .why .en,.why .he{ line-height:1.2; }
+  .holdstrip{ padding:5px 30px; }
+  .foot{ padding:4px 30px 6px; }
+  .foot .note{ font-size:10.5px; line-height:1.25; letter-spacing:0; }
 
   /* ---------- shirt care instructions ---------- */
   .carestrip{
     position:relative; z-index:1;
     background:var(--cream-deep);
     border-top:1px solid var(--line);
-    padding:4px 30px;
+    padding:3px 30px;
     display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap;
   }
   .care-head{ text-align:right; direction:rtl; }
@@ -177,7 +194,7 @@
     display:flex; flex-direction:column; align-items:center; gap:2px;
     text-align:center; width:104px;
   }
-  .care-item svg{ width:23px; height:23px; stroke:var(--ink); fill:none; stroke-width:1.5; }
+  .care-item svg{ width:21px; height:21px; stroke:var(--ink); fill:none; stroke-width:1.5; }
   .care-item .en{
     font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
     letter-spacing:.04em; font-size:9.5px; color:var(--ink); line-height:1.15;
@@ -280,6 +297,32 @@
         <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>50 OFF</span></div>
         <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>280</span></div>
       </div>
+
+      <div class="row guest">
+        <div class="thumb"><!--DUBA_SHIRT--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
+          <div class="item-he">חולצת ״דובה״</div>
+          <div class="item-note">Guest artist · no holds — sold on the spot
+            <span class="he">אמן אורח · אין שמירה — נמכרת במקום</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>100</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>20 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>80</span></div>
+      </div>
+
+      <div class="row">
+        <div class="thumb"><!--PEND_CONCRETE--></div>
+        <div>
+          <div class="item-en">Concrete Pendant</div>
+          <div class="item-he">תליון בטון</div>
+          <div class="item-note">Guest artist <span class="handle">@anima_concrete</span> · one price for all
+            <span class="he">אמן אורח · מחיר אחיד לכולם</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>250</div>
+        <div class="sticker-cell"></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>250</span></div>
+      </div>
     </div>
 
     <!-- VIP signup -->
@@ -357,8 +400,8 @@
       <div>
         <div class="note">Prices in ILS (₪). VIP column = VIP discount.</div>
         <div class="note note-he">המחירים בש״ח. עמודת VIP = הנחת VIP.</div>
-        <div class="note">Guest artists at our booth · limited special editions — ask for the <b>&ldquo;DUBA&rdquo;</b> shirt sheet and the <b>ARRESTED CLOTH</b> pendant sheet.</div>
-        <div class="note note-he">אמנים אורחים בדוכן · מהדורות מיוחדות בכמות מוגבלת — בקשו את דף חולצת ״דובה״ ואת דף תליוני הבטון.</div>
+        <div class="note">Guest-artist pieces (last two rows) are sold on their own — bundle prices apply to MasTool merch only.</div>
+        <div class="note note-he">פריטי האמנים האורחים (שתי השורות האחרונות) נמכרים בנפרד — מחירי החבילות חלים על מרצ'נדייז של מסטול בלבד.</div>
       </div>
       <div class="badge">VIP Discount</div>
     </footer>
