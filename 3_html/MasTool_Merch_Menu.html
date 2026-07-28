@@ -256,7 +256,20 @@ body{
   .tag--limit{ background:var(--red); color:#FCEFE9; }
 
   /* ---------- guest-artist items: standalone, never part of a bundle ---------- */
-  .row.guest{ border-top:2px solid var(--green); }
+  .guest-head{
+    position:relative; z-index:1;
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    padding:5px 30px; background:var(--cream-warm);
+    border-top:2px solid var(--green); border-bottom:1px solid var(--line);
+  }
+  .guest-head .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; font-size:10.5px; color:var(--green);
+  }
+  .guest-head .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:10.5px;
+    font-weight:500; color:var(--green-soft);
+  }
   .slot-photo{ width:48px; height:48px; object-fit:contain; display:block;
                filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
   .thumb-slot{
@@ -313,6 +326,15 @@ body{
   /* ---------- red discount sticker ---------- */
   .vip-cell{ text-align:right; }
   .num{ white-space:nowrap; }
+  .flat{
+    display:block; font-family:'Oswald',sans-serif; font-weight:600;
+    font-size:8px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--green-soft); line-height:1.2; margin-top:1px;
+  }
+  .flat .he{
+    font-family:'Heebo',sans-serif; direction:rtl; display:block;
+    font-size:8.5px; letter-spacing:0; text-transform:none;
+  }
   .sticker-cell{ display:flex; justify-content:flex-end; align-items:center; padding-right:2px; }
   .sticker{
     transform:rotate(-6deg);
@@ -328,6 +350,9 @@ body{
   }
 
   /* tighten fixed-height blocks so all eight rows + footer stay within A4 */
+  .col-head{ padding:13px 30px 9px; }
+  .row{ padding:3px 30px; }
+  .paystrip{ padding:8px 20px; }
   .header{ padding:13px 24px 9px; }
   .wordmark-img{ width:min(72%,360px); margin:2px auto 1px; }
   .subtitle{ margin-top:7px; }
@@ -337,7 +362,7 @@ body{
   .why li{ margin-bottom:1px; }
   .why .en,.why .he{ line-height:1.2; }
   .holdstrip{ padding:5px 30px; }
-  .foot{ padding:4px 30px 6px; }
+  .foot{ padding:3px 30px 5px; }
   .foot .note{ font-size:10.5px; line-height:1.25; letter-spacing:0; }
 
   /* ---------- shirt care instructions ---------- */
@@ -474,13 +499,18 @@ body{
         <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>280</span></div>
       </div>
 
-      <div class="row guest">
+      <div class="guest-head">
+        <div class="en">Guest Artists · Sold on Their Own — Not Part of Any Bundle</div>
+        <div class="he">אמנים אורחים · נמכרים בנפרד — לא נכללים בחבילות</div>
+      </div>
+
+      <div class="row">
         <div class="thumb"><div class="thumb-slot" title=""Duba" shirt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="5.6" width="17.6" height="13.2" rx="1.6"/><circle cx="12" cy="12.4" r="3.4"/><path d="M8.6 5.6 L10 3.4 h4 l1.4 2.2" stroke-linejoin="round"/></svg></div></div>
         <div>
           <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
           <div class="item-he">חולצת ״דובה״</div>
-          <div class="item-note">Guest artist · no holds — sold on the spot
-            <span class="he">אמן אורח · אין שמירה — נמכרת במקום</span></div>
+          <div class="item-note">Each shirt one of a kind, made by Duba · no holds — first come, first served
+            <span class="he">כל חולצה ייחודית, בעבודת ידו של דובה · ללא שמירה — כל הקודם זוכה</span></div>
         </div>
         <div class="price"><span class="cur">₪</span>100</div>
         <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>20 OFF</span></div>
@@ -492,12 +522,13 @@ body{
         <div>
           <div class="item-en">Concrete Pendant</div>
           <div class="item-he">תליון בטון</div>
-          <div class="item-note">Guest artist <span class="handle">@anima_concrete</span> · one price for all
-            <span class="he">אמן אורח · מחיר אחיד לכולם</span></div>
+          <div class="item-note">Hand-cast by <span class="handle">@anima_concrete</span> · new collection, inspired by our show
+            <span class="he">בטון יצוק בעבודת יד · קולקציה חדשה בהשראת המופע שלנו</span></div>
         </div>
         <div class="price"><span class="cur">₪</span>250</div>
         <div class="sticker-cell"></div>
-        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>250</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>250</span>
+          <span class="flat">One price for all<span class="he">מחיר אחיד</span></span></div>
       </div>
     </div>
 
@@ -576,8 +607,8 @@ body{
       <div>
         <div class="note">Prices in ILS (₪). VIP column = VIP discount.</div>
         <div class="note note-he">המחירים בש״ח. עמודת VIP = הנחת VIP.</div>
-        <div class="note">Guest-artist pieces (last two rows) are sold on their own — bundle prices apply to MasTool merch only.</div>
-        <div class="note note-he">פריטי האמנים האורחים (שתי השורות האחרונות) נמכרים בנפרד — מחירי החבילות חלים על מרצ'נדייז של מסטול בלבד.</div>
+        <div class="note">Bundle prices apply to MasTool merch only.</div>
+        <div class="note note-he">מחירי החבילות חלים על מרצ'נדייז של מסטול בלבד.</div>
       </div>
       <div class="badge">VIP Discount</div>
     </footer>

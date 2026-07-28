@@ -51,6 +51,11 @@ in either column.
 | "Duba" Shirt | ₪100 | ₪80 | Very limited. **No holds** — sold on the spot |
 | Concrete Pendant (@anima_concrete) | ₪250 | ₪250 | One price for all — no VIP discount, no string-colour choice |
 
+The pendant row credits Anima (`@anima_concrete`), who guests on the show, and
+states the pieces are a new collection inspired by it. The "one price for all /
+מחיר אחיד" label sits under ₪250 in the VIP column — that column is where the
+question comes up, and the row carries no red discount sticker.
+
 Both are excluded from every bundle — a "Duba" shirt does **not** count as the
 shirt in Shirt + Poster or All In. The menu footer states this in EN + HE, and
 the "no holds" rule on the Duba shirt overrides the 21:00 VIP hold policy
