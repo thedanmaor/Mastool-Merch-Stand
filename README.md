@@ -49,10 +49,11 @@ in either column.
 | Item | Regular | VIP | Notes |
 |---|---|---|---|
 | "Duba" Shirt | ₪100 | ₪80 | Very limited. **No holds** — sold on the spot |
-| Concrete Pendant (@anima_concrete) | ₪250 | ₪250 | One price for all — no VIP discount, no string-colour choice |
+| "Arrested Cloth" Concrete Pendant (@anima_concrete) | ₪250 | ₪250 | One price for all — no VIP discount, no string-colour choice |
 
-The pendant row credits Anima (`@anima_concrete`), who guests on the show, and
-states the pieces are a new collection inspired by it. The "one price for all /
+The pendant row leads with the collection name — **Arrested Cloth** — credits
+Anima (`@anima_concrete`), who guests on the show, and states the pieces are
+hand-cast custom pendants from a new collection inspired by the show. The "one price for all /
 מחיר אחיד" label sits under ₪250 in the VIP column — that column is where the
 question comes up, and the row carries no red discount sticker.
 
@@ -76,7 +77,7 @@ printed just below it.
    prints ~83mm across, verified to decode from the final master.
 
 3. ~~Guest-artist product photos~~ **DONE.**
-   - **Concrete Pendant** — `4_source/assets/thumbs/pend_concrete.png`, cut out
+   - **"Arrested Cloth" pendant** — `4_source/assets/thumbs/pend_concrete.png`, cut out
      of the supplied shot (background removed, 600×600 transparent PNG) and
      shown on a lilac tile.
    - **"Duba" Shirt** — deliberately has *no* photo. Every shirt is one of a
