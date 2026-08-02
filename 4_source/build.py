@@ -72,6 +72,33 @@ def thumb_tag(name, alt):
     f = ASSETS / "thumbs" / f"{name}.png"
     return f'<img class="merch-thumb" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
 
+def mystery_slot(name, alt):
+    """Deliberate 'mystery item' mark — every Duba shirt is one of a kind, so no
+    single photo represents the row. A dropped-in photo still wins if supplied."""
+    f = ASSETS / "thumbs" / f"{name}.png"
+    if f.exists():
+        return f'<img class="slot-photo" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
+    return ('<div class="thumb-slot thumb-slot--mystery" title="' + alt + '">'
+            '<svg viewBox="0 0 24 24" aria-hidden="true">'
+            '<path d="M9 3.5 L5.2 5.2 L3.6 9.2 L6.4 10.2 L7.2 8.6 V20.5 H16.8 V8.6 '
+            'L17.6 10.2 L20.4 9.2 L18.8 5.2 L15 3.5 A3 3 0 0 1 9 3.5 Z" stroke-linejoin="round"/>'
+            '<path d="M10.2 13.1 a1.85 1.85 0 1 1 2.55 1.9 c-.55 .3 -.75 .8 -.75 1.35 v.35" '
+            'stroke-linecap="round"/>'
+            '<path d="M12 18.4 v.05" stroke-linecap="round"/>'
+            '</svg></div>')
+
+def photo_slot(name, alt):
+    """Product photo if dropped into assets/thumbs/, else a dashed placeholder box."""
+    f = ASSETS / "thumbs" / f"{name}.png"
+    if f.exists():
+        return f'<img class="slot-photo" src="data:image/png;base64,{b64_file(f)}" alt="{alt}">'
+    return (f'<div class="thumb-slot" title="{alt}">'
+            '<svg viewBox="0 0 24 24" aria-hidden="true">'
+            '<rect x="3.2" y="5.6" width="17.6" height="13.2" rx="1.6"/>'
+            '<circle cx="12" cy="12.4" r="3.4"/>'
+            '<path d="M8.6 5.6 L10 3.4 h4 l1.4 2.2" stroke-linejoin="round"/>'
+            '</svg></div>')
+
 # ---------------------------------------------------------------- pages
 PAGES = [
     # (source, output stem, page w x h in mm, logo tag, viewport width px)
@@ -110,7 +137,9 @@ with sync_playwright() as p:
                 .replace("<!--BIT_QR-->",    qr_tag("bit-qr", "Paste Bit QR here", "כאן ממקמים את קוד ה-QR"))
                 .replace("<!--THUMB_SHIRT-->", thumb_tag("thumb_shirt", "T-Shirt"))
                 .replace("<!--THUMB_EVENT-->", thumb_tag("thumb_event", "Event Poster"))
-                .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster")))
+                .replace("<!--THUMB_ART-->",   thumb_tag("thumb_art",   "Limited Edition Art Poster"))
+                .replace("<!--DUBA_SHIRT-->",    mystery_slot("duba_shirt",  '"Duba" shirt — one of a kind'))
+                .replace("<!--PEND_CONCRETE-->", photo_slot("pend_concrete", "Concrete pendant")))
 
         html_path = OUT / f"{stem}.html"
         html_path.write_text(html, encoding="utf-8")

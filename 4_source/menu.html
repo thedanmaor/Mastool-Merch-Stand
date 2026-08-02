@@ -11,7 +11,12 @@
     --red:     #B0342A;   /* discount sticker */
     --gold:    #9A742A;   /* limited edition, on cream */
     --gold-he: #A8823A;
+    --straw:      #F1E1AC; /* Duba tile — warm, sits in the brass/gold family */
+    --straw-edge: #C2A03B;
+    --lilac:      #E4DCEF; /* Anima tile — muted so it doesn't fight the brass */
+    --lilac-edge: #B0A0CB;
   }
+  .holdstrip .line2{ display:block; }
   .col-head{
     display:grid; grid-template-columns:60px 1fr 92px 74px 86px;
     align-items:end; gap:8px;
@@ -40,11 +45,12 @@
   @media (max-width:520px){
     .thumb img{ width:40px; height:40px; }
     .thumb--wide img{ width:52px; }
+    .slot-photo,.thumb-slot{ width:40px; height:40px; }
   }
   .row{
     display:grid; grid-template-columns:60px 1fr 92px 74px 86px;
     align-items:center; gap:8px;
-    padding:6px 30px;
+    padding:4px 30px;
     border-bottom:1px solid var(--line);
   }
   .row:nth-child(even){ background:var(--cream-deep); }
@@ -82,6 +88,39 @@
     vertical-align:middle; font-weight:600;
   }
   .row.allin .tag{ background:var(--cream); color:var(--green); }
+  .tag--limit{ background:var(--red); color:#FCEFE9; }
+
+  /* ---------- guest-artist items: standalone, never part of a bundle ---------- */
+  .guest-head{
+    position:relative; z-index:1;
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    padding:5px 30px; background:var(--cream-warm);
+    border-top:2px solid var(--green); border-bottom:1px solid var(--line);
+  }
+  .guest-head .en{
+    font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; font-size:10.5px; color:var(--green);
+  }
+  .guest-head .he{
+    font-family:'Heebo',sans-serif; direction:rtl; font-size:10.5px;
+    font-weight:500; color:var(--green-soft);
+  }
+  .slot-photo{ width:48px; height:48px; object-fit:contain; display:block;
+               filter:drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+  .thumb-slot{
+    width:48px; height:48px; flex:none; background:#fff;
+    border:1.5px dashed var(--green-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .thumb-slot svg{ width:24px; height:24px; stroke:var(--green-soft); fill:none; stroke-width:1.3; }
+  /* Duba shirts are one of a kind — the mystery mark is the artwork, not a placeholder */
+  .thumb-slot--mystery{ background:var(--straw); border:1.5px solid var(--straw-edge); }
+  .thumb-slot--mystery svg{ width:32px; height:32px; stroke:var(--green); stroke-width:1.2; }
+  /* guest-artist tiles: each artist gets one flat colour so the two rows read as a pair */
+  .thumb--anima .slot-photo{
+    box-sizing:border-box; padding:2px;
+    background:var(--lilac); border:1.5px solid var(--lilac-edge);
+  }
 
   /* ---------- limited edition: gold + star ---------- */
   .item-en.gold,
@@ -96,21 +135,33 @@
   .row.allin .item-en.gold, .row.allin .item-he.gold,
   .row.allin .star{ color:var(--brass-lite); }
 
+  .item-note{
+    font-family:'Oswald',sans-serif; font-size:9px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--green-soft); margin-top:2px; line-height:1.25;
+  }
+  .item-note .he{
+    font-family:'Heebo',sans-serif; direction:rtl; display:block;
+    font-size:9.5px; letter-spacing:0; text-transform:none;
+  }
+  .item-note .handle{ text-transform:lowercase; }
+  /* collection name leads, the plain product name trails it quietly */
+  .item-en .sub{ font-size:.7em; color:var(--green-soft); letter-spacing:.04em; }
+
   /* ---------- why join VIP ---------- */
-  .why{ list-style:none; margin-top:7px; }
+  .why{ list-style:none; margin-top:4px; }
   .why li{
     display:grid; grid-template-columns:13px 1fr; gap:7px;
-    align-items:start; margin-bottom:4px;
+    align-items:start; margin-bottom:2px;
   }
-  .why .tick{ color:var(--brass); font-size:10px; line-height:1.5; }
-  .why .en{ grid-column:2; font-size:12px; font-weight:600; color:var(--ink); line-height:1.35; }
-  .why .he{ grid-column:2; direction:rtl; font-size:11.5px; color:var(--green-soft); line-height:1.35; }
+  .why .tick{ color:var(--brass); font-size:10px; line-height:1.4; }
+  .why .en{ grid-column:2; font-size:11.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+  .why .he{ grid-column:2; direction:rtl; font-size:11px; color:var(--green-soft); line-height:1.25; }
 
   /* ---------- VIP hold policy ---------- */
   .holdstrip{
     position:relative; z-index:1;
     background:var(--green); color:#E4EDE2;
-    padding:9px 30px; text-align:center;
+    padding:7px 30px; text-align:center;
     border-top:1px solid var(--line);
   }
   .holdstrip .en{ font-size:11.5px; line-height:1.45; }
@@ -120,6 +171,15 @@
   /* ---------- red discount sticker ---------- */
   .vip-cell{ text-align:right; }
   .num{ white-space:nowrap; }
+  .flat{
+    display:block; font-family:'Oswald',sans-serif; font-weight:600;
+    font-size:8px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--green-soft); line-height:1.2; margin-top:1px;
+  }
+  .flat .he{
+    font-family:'Heebo',sans-serif; direction:rtl; display:block;
+    font-size:8.5px; letter-spacing:0; text-transform:none;
+  }
   .sticker-cell{ display:flex; justify-content:flex-end; align-items:center; padding-right:2px; }
   .sticker{
     transform:rotate(-6deg);
@@ -134,16 +194,31 @@
     z-index:3;
   }
 
-  /* tighten QR panel on this page to fit the care strip within A4 */
-  .qr-panel{ padding:15px 30px; }
+  /* tighten fixed-height blocks so all eight rows + footer stay within A4 */
+  .col-head{ padding:13px 30px 9px; }
+  .row{ padding:3px 30px; }
+  .paystrip{ padding:8px 20px; }
+  .header{ padding:13px 24px 9px; }
+  .wordmark-img{ width:min(72%,360px); margin:2px auto 1px; }
+  .subtitle{ margin-top:7px; }
+  .rule{ margin-top:7px; }
+  .qr-panel{ padding:5px 30px; }
+  .qr-copy .h-he{ margin-top:2px; }
+  .why li{ margin-bottom:1px; }
+  .why .en,.why .he{ line-height:1.2; }
+  .holdstrip{ padding:4px 30px; }
+  .holdstrip .en,.holdstrip .he{ line-height:1.32; }
+  .foot{ padding:4px 24px; justify-content:center; gap:8px; flex-wrap:nowrap; white-space:nowrap; }
+  .foot .note{ font-size:9.5px; line-height:1.2; letter-spacing:0; }
+  .foot .sep{ font-size:9.5px; color:var(--green-soft); opacity:.55; }
 
   /* ---------- shirt care instructions ---------- */
   .carestrip{
     position:relative; z-index:1;
     background:var(--cream-deep);
     border-top:1px solid var(--line);
-    padding:8px 30px;
-    display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap;
+    padding:3px 30px;
+    display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap;
   }
   .care-head{ text-align:right; direction:rtl; }
   .care-head .en{
@@ -158,10 +233,10 @@
     display:flex; align-items:center; gap:24px; flex-wrap:wrap; justify-content:center;
   }
   .care-item{
-    display:flex; flex-direction:column; align-items:center; gap:3px;
+    display:flex; flex-direction:column; align-items:center; gap:2px;
     text-align:center; width:104px;
   }
-  .care-item svg{ width:27px; height:27px; stroke:var(--ink); fill:none; stroke-width:1.5; }
+  .care-item svg{ width:21px; height:21px; stroke:var(--ink); fill:none; stroke-width:1.5; }
   .care-item .en{
     font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase;
     letter-spacing:.04em; font-size:9.5px; color:var(--ink); line-height:1.15;
@@ -264,34 +339,38 @@
         <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>50 OFF</span></div>
         <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>280</span></div>
       </div>
-    </div>
 
-    <!-- VIP signup -->
-    <div class="qr-panel">
-      <div class="qr-slot" data-slot="vip-qr">
-        <!--VIP_QR-->
+      <div class="guest-head">
+        <div class="en">Guest Artists · Sold on Their Own — Not Part of Any Bundle</div>
+        <div class="he">אמנים אורחים · נמכרים בנפרד — לא נכללים בחבילות</div>
       </div>
-      <div class="qr-copy">
-        <div class="h">Sign Up to VIP Here — Free</div>
-        <div class="h-he">להרשמה למועדון האח"מים סרקו כאן — בחינם</div>
-        <ul class="why">
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Up to ₪50 off every order</span>
-            <span class="he">עד ₪50 הנחה על כל הזמנה</span></li>
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Items held under your name for 2 hours from doors — limited editions won't sell out on you</span>
-            <span class="he">הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — המהדורה המוגבלת לא תיגמר לכם</span></li>
-          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-            <span class="en">Early notice on new shows &amp; drops, before they go public</span>
-            <span class="he">עדכון מוקדם על הופעות ומהדורות חדשות, לפני כולם</span></li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- VIP hold policy -->
-    <div class="holdstrip">
-      <div class="en"><b>Hold policy:</b> VIP items are held under your name for two hours from doors — <b>21:00</b> for this show. After that, all remaining merch is released to the general public.</div>
-      <div class="he"><b>מדיניות שמירה:</b> הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — <b>21:00</b> בהופעה זו. לאחר מכן כל המרצ'נדייז שנותר ישוחרר לקהל הרחב.</div>
+      <div class="row">
+        <div class="thumb thumb--duba"><!--DUBA_SHIRT--></div>
+        <div>
+          <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
+          <div class="item-he">חולצת ״דובה״</div>
+          <div class="item-note">Each shirt one of a kind, made by Duba · no holds — first come, first served
+            <span class="he">כל חולצה ייחודית, בעבודת ידו של דובה · ללא שמירה — כל הקודם זוכה</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>100</div>
+        <div class="sticker-cell"><span class="sticker"><span class="ils">₪</span>20 OFF</span></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>80</span></div>
+      </div>
+
+      <div class="row">
+        <div class="thumb thumb--anima"><!--PEND_CONCRETE--></div>
+        <div>
+          <div class="item-en">Arrested Cloth <span class="sub">— Concrete Pendant</span></div>
+          <div class="item-he">קולקציית ״בד עצור״ · תליון בטון</div>
+          <div class="item-note">Hand-cast custom pendants by <span class="handle">@anima_concrete</span> · new collection, inspired by our show
+            <span class="he">תליונים יצוקים בעבודת יד · קולקציה חדשה בהשראת המופע שלנו</span></div>
+        </div>
+        <div class="price"><span class="cur">₪</span>250</div>
+        <div class="sticker-cell"></div>
+        <div class="price vip vip-cell"><span class="num"><span class="cur">₪</span>250</span>
+          <span class="flat">One price for all<span class="he">מחיר אחיד</span></span></div>
+      </div>
     </div>
 
     <!-- payment terms -->
@@ -299,6 +378,14 @@
       <span class="en">Cash / Bit Only</span>
       <span class="dot">•</span>
       <span class="he">התשלום במזומן / ביט בלבד</span>
+    </div>
+
+    <!-- VIP hold policy -->
+    <div class="holdstrip">
+      <div class="en"><b>Hold policy:</b> VIP items are held under your name for two hours from doors — <b>21:00</b> for this show.
+        <span class="line2">After that, all remaining merch is released to the general public.</span></div>
+      <div class="he"><b>מדיניות שמירה:</b> הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — <b>21:00</b> בהופעה זו.
+        <span class="line2">לאחר מכן כל המרצ'נדייז שנותר ישוחרר לקהל הרחב.</span></div>
     </div>
 
     <!-- shirt care instructions -->
@@ -337,12 +424,32 @@
       </div>
     </div>
 
-    <footer class="foot">
-      <div>
-        <div class="note">Prices in ILS (₪). VIP column = VIP discount.</div>
-        <div class="note note-he">המחירים בש״ח. עמודת VIP = הנחת VIP.</div>
+    <!-- VIP signup -->
+    <div class="qr-panel">
+      <div class="qr-slot" data-slot="vip-qr">
+        <!--VIP_QR-->
       </div>
-      <div class="badge">VIP Discount</div>
+      <div class="qr-copy">
+        <div class="h">Sign Up to VIP Here — Free</div>
+        <div class="h-he">להרשמה למועדון האח"מים סרקו כאן — בחינם</div>
+        <ul class="why">
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Up to ₪50 off every order</span>
+            <span class="he">עד ₪50 הנחה על כל הזמנה</span></li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Items held under your name for 2 hours from doors — limited editions won't sell out on you</span>
+            <span class="he">הפריטים נשמרים על שמכם שעתיים מפתיחת הדלתות — המהדורה המוגבלת לא תיגמר לכם</span></li>
+          <li><span class="tick"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+            <span class="en">Early notice on new shows &amp; drops, before they go public</span>
+            <span class="he">עדכון מוקדם על הופעות ומהדורות חדשות, לפני כולם</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <span class="note">Prices in ILS (₪) · bundles are MasTool merch only</span>
+      <span class="sep">•</span>
+      <span class="note note-he">המחירים בש״ח · החבילות חלות על מרצ'נדייז של MasTool בלבד</span>
     </footer>
   </div>
 </body>

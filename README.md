@@ -8,7 +8,8 @@ Gagarin Club, Tel Aviv · 13 August 2026
 |---|---|---|
 | MasTool_Merch_Menu_PRINT_300dpi.png | 2480×3508 | A4 portrait (210×297mm), 300 DPI, RGB |
 | MasTool_Bit_Payment_PRINT_300dpi.png | 2480×3508 | A4 portrait (210×297mm), 300 DPI, RGB |
-| MasTool_VIP_Signup_master.png | 1290×3924 | Web page render @3x (reference only) |
+| MasTool_VIP_Signup_PRINT_300dpi.png | 2480×3508 | VIP web page fitted to A4, 300 DPI |
+| MasTool_VIP_Signup_master.png | 1290×3924 | Older @3x web render, superseded by the file above |
 
 ### 2_previews/  — for sharing / approval (Vlad, Almog)
 Low-res, small file size, email-friendly.
@@ -28,6 +29,10 @@ composited into the QR slots automatically.
 
 ## Pricing (as printed)
 
+One A4 menu carries everything. MasTool merch on top, guest-artist pieces in the
+last two rows below a divider rule.
+
+### MasTool merch — bundles apply here only
 | Item | Regular | VIP | Saves |
 |---|---|---|---|
 | T-Shirt | ₪100 | ₪80 | ₪20 |
@@ -39,6 +44,23 @@ composited into the QR slots automatically.
 
 Verified: no combination of smaller purchases beats any bundle price,
 in either column.
+
+### Guest-artist pieces — standalone, never part of a bundle
+| Item | Regular | VIP | Notes |
+|---|---|---|---|
+| "Duba" Shirt | ₪100 | ₪80 | Very limited. **No holds** — sold on the spot |
+| "Arrested Cloth" Concrete Pendant (@anima_concrete) | ₪250 | ₪250 | One price for all — no VIP discount, no string-colour choice |
+
+The pendant row leads with the collection name — **Arrested Cloth** — credits
+Anima (`@anima_concrete`), who guests on the show, and states the pieces are
+hand-cast custom pendants from a new collection inspired by the show. The "one price for all /
+מחיר אחיד" label sits under ₪250 in the VIP column — that column is where the
+question comes up, and the row carries no red discount sticker.
+
+Both are excluded from every bundle — a "Duba" shirt does **not** count as the
+shirt in Shirt + Poster or All In. The menu footer states this in EN + HE, and
+the "no holds" rule on the Duba shirt overrides the 21:00 VIP hold policy
+printed just below it.
 
 ---
 
@@ -54,7 +76,26 @@ in either column.
    (payee: דן מאור). Regenerated at print resolution with ECC level Q,
    prints ~83mm across, verified to decode from the final master.
 
-Nothing currently blocks printing.
+3. ~~Guest-artist product photos~~ **DONE.**
+   - **"Arrested Cloth" pendant** — `4_source/assets/thumbs/pend_concrete.png`, cut out
+     of the supplied shot (background removed, 600×600 transparent PNG) and
+     shown on a lilac tile.
+   - **"Duba" Shirt** — deliberately has *no* photo. Every shirt is one of a
+     kind, so no single shot represents the row; it renders a mystery mark
+     (shirt outline + question mark) on a straw tile. Dropping a real
+     `duba_shirt.png` into `4_source/assets/thumbs/` would override it — only
+     do that if the row stops being a mystery.
+
+   Any photo dropped in there should be a square PNG, transparent or white
+   background, ≥400×400px. They render at 48px on the sheet (~17mm at print
+   size), `object-fit:contain`.
+
+Nothing blocks printing.
+
+### Sheet order (top to bottom)
+Header · price table · guest-artist rows · **Cash / Bit only** · hold policy ·
+shirt care · **VIP signup QR** · footnotes. Payment terms sit right under the
+prices; the VIP signup panel closes the sheet as the last call to action.
 
 ## Operational note
 The 21:00 hold policy printed on the menu requires someone at the stand keeping
@@ -66,6 +107,15 @@ Edition Art Poster) before submitting. On success they get a ticket-style popup
 with their name and picks to show at the stand. The signups sheet has matching
 `Shirt` / `Shirt Size` / `Event Poster` / `Ltd Poster` columns — cross-check
 these against the hold list at 21:00.
+
+Three rules on the guest-artist rows differ from everything else at the stand,
+and whoever works the table needs all three: the "Duba" shirt is **not held**
+(it never goes on the 21:00 VIP list), the concrete pendant is **₪250 for
+everyone** including VIPs, and **neither counts toward a bundle** — a customer
+asking for "All In" with a Duba shirt is buying ₪330 + ₪100, not ₪330.
+
+The VIP signup form does not offer the Duba shirt or the pendant as pre-select
+options — they are counter-only items.
 
 The menu carries a bilingual (EN/HE) shirt-care strip at the foot of the page —
 machine wash 40°, do not tumble dry, iron low heat — as clean ink-stroke laundry
