@@ -14,3 +14,9 @@ Edit `4_source/*.html` or `base.css` → always finish the loop:
 
 Never leave `2_previews/` stale — previews are what Dan sends to Vlad and Almog
 for approval, so an out-of-date preview gets approved for the wrong artwork.
+
+## Repo stays on the personal account
+
+This repo lives at `thedanmaor/Mastool-Merch-Stand` and stays there. The global
+rule about hosting everything under `DID-Software-Solutions` does not apply here —
+don't propose transferring it.
