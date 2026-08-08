@@ -5,7 +5,11 @@
 Edit `4_source/*.html` or `base.css` → always finish the loop:
 
 1. `cd 4_source && python build.py`
-2. Check A4 fit for print pieces (`.sheet` scrollHeight vs 1122.5px page).
+2. Check A4 fit for print pieces. Measure the built file in `_build/` with
+   `build.py`'s own `sheet_css` injected (`.sheet` fixed 210×297mm, `.rows`
+   flex, `.row{flex:1 1 0}`) and compare the last child's bottom against the
+   `.sheet` bottom (1122.5px). Measuring the raw source without that CSS reports
+   a false "fits" — the source sheet is auto-height, the built one is not.
 3. Copy outputs out of `4_source/_build/`:
    - `*_PRINT_300dpi.png` → `1_print_masters/`
    - `*_preview.png` → `2_previews/`

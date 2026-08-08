@@ -29,8 +29,9 @@ composited into the QR slots automatically.
 
 ## Pricing (as printed)
 
-One A4 menu carries everything. MasTool merch on top, guest-artist pieces in the
-last two rows below a divider rule.
+One A4 menu carries everything, split into three labelled sections by divider
+rules: **Official MasTool Merch** (single items), **Bundles · Buy Together — Pay
+Less**, then **Guest Artists** in the last two rows.
 
 ### MasTool merch — bundles apply here only
 | Item | Regular | VIP | Saves |
@@ -49,12 +50,14 @@ in either column.
 | Item | Regular | VIP | Notes |
 |---|---|---|---|
 | "Duba" Shirt | ₪100 | ₪80 | Very limited. **No holds** — sold on the spot |
-| "Arrested Cloth" Concrete Pendant (@anima_concrete) | ₪200 | ₪180 | ₪20 VIP discount. No string-colour choice |
+| *Arrested Cloth* Pendant by Anima Concrete | ₪200 | ₪180 | Very limited. ₪20 VIP discount. No string-colour choice |
 
-The pendant row leads with the collection name — **Arrested Cloth** — credits
-Anima (`@anima_concrete`), who guests on the show, and states the pieces are
-hand-cast custom pendants from a new collection inspired by the show. It carries
-the same red ₪20 OFF sticker as the other discounted rows.
+The pendant row leads with the collection name — ***Arrested Cloth*** in italic —
+followed by "Pendant by Anima Concrete" and the same red **Very Limited** tag the
+Duba shirt carries. The note line credits Anima (`@anima_concrete`), who guests on
+the show, and states the pieces are hand-cast custom pendants from a new
+collection inspired by the show. The row carries the red ₪20 OFF sticker like
+every other discounted item.
 
 Both are excluded from every bundle — a "Duba" shirt does **not** count as the
 shirt in Shirt + Poster or All In. The menu footer states this in EN + HE, and
