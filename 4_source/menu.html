@@ -89,6 +89,9 @@
   }
   .row.allin .tag{ background:var(--cream); color:var(--green); }
   .tag--limit{ background:var(--red); color:#FCEFE9; }
+  /* both guest rows carry this tag — flush them right so they stack in one column */
+  .item-en--tagged{ display:flex; align-items:baseline; gap:.4em; }
+  .item-en--tagged .tag{ margin-left:auto; flex:none; }
 
   /* ---------- section dividers: bundles, then guest-artist items ---------- */
   .guest-head,
@@ -257,7 +260,6 @@
 
     <header class="header">
       <!--LOGO-->
-      <div class="subtitle">Merch Stand Menu</div>
       <div class="subtitle-he">תפריט דוכן המרצ'נדייז</div>
       <div class="rule"></div>
     </header>
@@ -355,7 +357,7 @@
       <div class="row">
         <div class="thumb thumb--duba"><!--DUBA_SHIRT--></div>
         <div>
-          <div class="item-en">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
+          <div class="item-en item-en--tagged">&ldquo;Duba&rdquo; Shirt <span class="tag tag--limit">Very Limited</span></div>
           <div class="item-he">חולצת ״דובה״</div>
           <div class="item-note">Each shirt one of a kind, made by Duba · no holds — first come, first served
             <span class="he">כל חולצה ייחודית, בעבודת ידו של דובה · ללא שמירה — כל הקודם זוכה</span></div>
@@ -368,7 +370,7 @@
       <div class="row">
         <div class="thumb thumb--anima"><!--PEND_CONCRETE--></div>
         <div>
-          <div class="item-en item-en--long"><em class="collection">Arrested Cloth</em> <span class="sub">Pendant by Anima Concrete</span> <span class="tag tag--limit">Very Limited</span></div>
+          <div class="item-en item-en--long item-en--tagged"><em class="collection">Arrested Cloth</em> <span class="sub">Pendant by Anima Concrete</span> <span class="tag tag--limit">Very Limited</span></div>
           <div class="item-he">קולקציית ״בד עצור״ · תליון בטון</div>
           <div class="item-note">Hand-cast custom pendants by <span class="handle">@anima_concrete</span> · new collection, inspired by our show
             <span class="he">תליונים יצוקים בעבודת יד · קולקציה חדשה בהשראת המופע שלנו</span></div>

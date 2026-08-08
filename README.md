@@ -54,7 +54,8 @@ in either column.
 
 The pendant row leads with the collection name — ***Arrested Cloth*** in italic —
 followed by "Pendant by Anima Concrete" and the same red **Very Limited** tag the
-Duba shirt carries. The note line credits Anima (`@anima_concrete`), who guests on
+Duba shirt carries — both tags are flushed right so they stack in one column. The
+note line credits Anima (`@anima_concrete`), who guests on
 the show, and states the pieces are hand-cast custom pendants from a new
 collection inspired by the show. The row carries the red ₪20 OFF sticker like
 every other discounted item.
@@ -95,7 +96,8 @@ printed just below it.
 Nothing blocks printing.
 
 ### Sheet order (top to bottom)
-Header · price table · guest-artist rows · **Cash / Bit only** · hold policy ·
+Header (wordmark + Hebrew subtitle only — no English subtitle) · price table ·
+guest-artist rows · **Cash / Bit only** · hold policy ·
 shirt care · **VIP signup QR** · footnotes. Payment terms sit right under the
 prices; the VIP signup panel closes the sheet as the last call to action.
 
