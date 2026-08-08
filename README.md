@@ -60,6 +60,9 @@ the show, and states the pieces are hand-cast custom pendants from a new
 collection inspired by the show. The row carries the red ₪20 OFF sticker like
 every other discounted item.
 
+Neither guest row carries a Hebrew name line — the artist and collection names
+stay in English. The Hebrew note line under each row remains.
+
 Both are excluded from every bundle — a "Duba" shirt does **not** count as the
 shirt in Shirt + Poster or All In. The menu footer states this in EN + HE, and
 the "no holds" rule on the Duba shirt overrides the 21:00 VIP hold policy
