@@ -49,13 +49,12 @@ in either column.
 | Item | Regular | VIP | Notes |
 |---|---|---|---|
 | "Duba" Shirt | ₪100 | ₪80 | Very limited. **No holds** — sold on the spot |
-| "Arrested Cloth" Concrete Pendant (@anima_concrete) | ₪250 | ₪250 | One price for all — no VIP discount, no string-colour choice |
+| "Arrested Cloth" Concrete Pendant (@anima_concrete) | ₪200 | ₪180 | ₪20 VIP discount. No string-colour choice |
 
 The pendant row leads with the collection name — **Arrested Cloth** — credits
 Anima (`@anima_concrete`), who guests on the show, and states the pieces are
-hand-cast custom pendants from a new collection inspired by the show. The "one price for all /
-מחיר אחיד" label sits under ₪250 in the VIP column — that column is where the
-question comes up, and the row carries no red discount sticker.
+hand-cast custom pendants from a new collection inspired by the show. It carries
+the same red ₪20 OFF sticker as the other discounted rows.
 
 Both are excluded from every bundle — a "Duba" shirt does **not** count as the
 shirt in Shirt + Poster or All In. The menu footer states this in EN + HE, and
@@ -108,11 +107,10 @@ with their name and picks to show at the stand. The signups sheet has matching
 `Shirt` / `Shirt Size` / `Event Poster` / `Ltd Poster` columns — cross-check
 these against the hold list at 21:00.
 
-Three rules on the guest-artist rows differ from everything else at the stand,
-and whoever works the table needs all three: the "Duba" shirt is **not held**
-(it never goes on the 21:00 VIP list), the concrete pendant is **₪250 for
-everyone** including VIPs, and **neither counts toward a bundle** — a customer
-asking for "All In" with a Duba shirt is buying ₪330 + ₪100, not ₪330.
+Two rules on the guest-artist rows differ from everything else at the stand, and
+whoever works the table needs both: the "Duba" shirt is **not held** (it never
+goes on the 21:00 VIP list), and **neither piece counts toward a bundle** — a
+customer asking for "All In" with a Duba shirt is buying ₪330 + ₪100, not ₪330.
 
 The VIP signup form does not offer the Duba shirt or the pendant as pre-select
 options — they are counter-only items.
